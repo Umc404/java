@@ -1,0 +1,15 @@
+package day01;
+
+public class Test01 {
+
+	public static void main(String[] args) {
+		System.out.println("hello world");
+		System.out.println("한글");
+		// 한줄주석
+		/*여러줄 주석*/
+		// sysout ctrl+space : System.out.println();
+		// 실행단축키 ctrl+f11
+		
+	}
+
+}

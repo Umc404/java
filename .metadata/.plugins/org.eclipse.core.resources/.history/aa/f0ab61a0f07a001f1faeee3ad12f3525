@@ -1,0 +1,22 @@
+package day01;
+
+public class Test02 {
+	public static void main(String[] args) {
+		/* 국어 영어 수학 세 점수의 합계와 평균을 출력
+		 * if 문 이용하여 평균 80점 이상이면 pass / fail*/
+		int kor = 70;
+		int eng = 67;
+		int math = 59;
+		
+		if (kor+eng+math/3 >= 80 ) {
+			System.out.println("pass");
+		}
+		else {
+			System.out.println("fail");
+		}
+		
+		
+		
+		
+	}
+}
