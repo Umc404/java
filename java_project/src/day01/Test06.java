@@ -16,9 +16,9 @@ public class Test06 {
 		 * 검색어 : 가나다
 		 * 검색결과가 없습니다. */
 		
+		Scanner scan = new Scanner(System.in);
 		String[] fileName = {"spring.java","python.py","react.jsx","css.css","String.java",
 				"component.jsx","text.txt"};
-		Scanner scan = new Scanner(System.in);
 		
 		System.out.println("검색어를 입력하세요.");
 		String s = scan.next();
@@ -41,7 +41,7 @@ public class Test06 {
 		if(cnt == 0) {
 			System.out.println("검색결과가 없습니다.");
 		}
-		
+		scan.close();
 	}
 
 }

@@ -1,0 +1,24 @@
+package day03;
+
+public class CardMain {
+
+	public static void main(String[] args) {
+//		 Card c = new Card();
+		 CardPack cp = new CardPack();	
+//			c.setNumber();
+//			c.setShape();
+//			c.print();
+		 
+		 cp.shuffle();
+		 
+		 int cnt = 0;
+		 for(int i=9; i<4; i++) {
+			 for(int j=0; j<13; j++) {
+				 cp.getPack()[cnt].print();
+				 cnt++;
+			 }
+			System.out.println();
+		 }
+	}
+
+}

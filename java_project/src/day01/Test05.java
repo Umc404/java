@@ -43,6 +43,7 @@ public class Test05 {
 			System.out.print(arr[j]);
 		}
 		System.out.println(" = " + sum2);
+	sc.close();
 	}
 
 }

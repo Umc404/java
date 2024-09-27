@@ -1,0 +1,15 @@
+package day03;
+
+public class PrintStudent {
+
+	public static void main(String[] args) {
+		Student st = new Student();
+		
+		st.print();
+		st.Student("인천","엄기빈");
+		st.print();
+		st.Student("인천","엄기빈","AWS Backend","01022508322");
+		st.print();
+	}
+
+}

@@ -1,0 +1,14 @@
+package day03;
+
+public class CardMain {
+
+	public static void main(String[] args) {
+		 Card c = new Card();
+			
+		 c.print();
+			c.setNumber();
+			c.setShape();
+		
+	}
+
+}
