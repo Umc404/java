@@ -15,7 +15,7 @@ public class Class02 {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Car c = new Car(); // 생성자 호출은 단 한번 객체 생성시만 가능.
+//		Car c = new Car(); // 생성자 호출은 단 한번 객체 생성시만 가능.
 //		c.CarStatus(); // console 실행
 		// 시동 on
 //		c.setPower("on");

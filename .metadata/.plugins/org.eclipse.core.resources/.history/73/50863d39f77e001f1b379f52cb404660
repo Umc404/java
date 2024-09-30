@@ -1,0 +1,22 @@
+package day04;
+
+public class Extends01 {
+
+	public static void main(String[] args) {
+		/* 상속(Inheritance) : 부모의 클래스 멤버 요소를 자식이 물려받는 것.
+		 * 멤버 요소 : 멤버변수, 메서드 사용 가능. private은 상속되지 않음. 상속하려면 protected 사용.
+		 * 상속받는 부모클래스가 다른 패키지에 있다면, default도 상속 대상이 안됨.
+		 * public / protected 접근제한자만 가능.
+		 * 
+		 * 상속 키워드 : extends
+		 * 상속은 1개만 가능. 다중상속을 허용하지 않음.
+		 * 
+		 * class class명 extends 부모class명 "extends X" {  // 큰따옴표처럼 두번은 되지 않음.
+		 * 	// 본인의 멤버변수와 메서드 구현 가능.
+		 *	// 본인멤버변수 + 본인메서드 + 부모멤버변수 + 부모메서드 
+		 * }
+		 */
+
+	}
+
+}
