@@ -1,0 +1,45 @@
+package day05;
+
+import java.util.Scanner;
+
+public class ProductController {
+	// product 배열 생성
+	// 추가, 삭제, 수정, 리스트 보기
+	
+	private Product[] menu = new Product[10];
+	private int cnt; // index
+	
+	
+	public void printProduct() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void insertProduct(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void deleteProduct(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void modifyProduct(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public Product[] getMenu() {
+		return menu;
+	}
+	public void setMenu(Product[] menu) {
+		this.menu = menu;
+	}
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
+	
+	
+}

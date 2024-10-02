@@ -1,0 +1,113 @@
+package student;
+
+import java.util.Scanner;
+
+/* -- 학생 --
+ * 학번 : studNo
+ * 이름 : name
+ * 나이 : age
+ * 전화번호 : telNum
+ * 주소 : addr
+ * 수강과목들(배열) : subject
+ * 
+ * -- 과목 --
+ * 과목코드 : subCode
+ * 과목명 : subName
+ * 학점 : subPoint
+ * 시수 : subTime
+ * 교수명 : subProName
+ * 시간표 : subTimetable
+ * 강의장 : subState
+ * */
+
+public class StudentController implements Program {
+	// 멤버변수 추가
+	// student
+	private String studNo, name, telNum, addr;
+	private int age;
+	// subject
+	private String subCode, subName, subProName, subTimetable, subState;
+	private int subPoint, subTime;
+	
+	private Student[] std = new Student[10];
+	private int cnt = 0;
+	
+	@Override
+	public void insertStudent(Scanner scan) {
+		
+		System.out.println("학번 >");
+		studNo = scan.next();
+		System.out.println("이름 >");
+		name = scan.next();
+		System.out.println("나이 >");
+		age = scan.nextInt();
+		System.out.println("연락처 >");
+		telNum = scan.next();
+		System.out.println("주소 >");
+		addr = scan.next();
+		
+		Student info = new Student();
+		info.insertStudent(studNo, name, age, telNum, addr);
+		std[cnt] = info;
+		cnt++;
+	}
+
+	
+	
+	@Override
+	public void printStudent() {
+		// TODO Auto-generated method stub
+		for(Student list : std) {
+			if(list != null) {
+				System.out.println("학생번호 : " + list.getStudNo());
+				System.out.println("이름 : " + list.getName());
+				System.out.println("나이 : " + list.getAge());
+				System.out.println("연락처 : " + list.getTelNum());
+				System.out.println("주소 : " + list.getAddr());
+			}
+		}
+	}
+	
+	@Override
+	public void searchStudent(Scanner scan) {
+		
+		System.out.println("학생의 이름을 작성하세요."); // 나중에 되면 학번도
+		String searchText = scan.next();
+		
+		for(int i=0; i<std.length; i++) {
+			if(std[i].getName().equals(searchText)) {
+				std[i].studentInfo();
+				return;
+			}
+//			else if(std[i].getStudNo().equals(searchText)) {
+//				
+//			}
+		}
+		
+	}
+
+	@Override
+	public void modifyStudent(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteStudent(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void registSubject(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteSubject(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,6 +1,5 @@
 package day04;
 
-import java.util.List;
 
 /* - 학생 정보를 관리하기 위한 클래스
  * - 학생 기본정보 : 이름, 생년월일, 전화번호, 나이
@@ -46,31 +45,31 @@ public class StudentMain {
 		Student st6 = new Student("kim","991230","010-7777-7777",26,"incheon");
 		Student st7 = new Student("hong","970725","010-8888-8888",28,"seoul");
 		
-		st.insertCourse("JS", "2 month");
-		st.insertCourse("Java", "3 month");
-		
-		st1.insertCourse("python", "4 month");
-		st1.insertCourse("AWS", "2 month");
-		
-		st2.insertCourse("MySQL", "2 month");
-		st2.insertCourse("python", "2 month");
-		st2.insertCourse("JS", "2 month");
-		st2.insertCourse("React", "2 month");
-		
-		st3.insertCourse("python", "1 month");
-		st3.insertCourse("Oracle", "3 month");
-		
-		st4.insertCourse("HTML", "3 month");
-		st4.insertCourse("Java", "2 month");
-		st4.insertCourse("python", "4 month");
-		st4.insertCourse("AWS", "2 month");
-		
-		st5.insertCourse("JS", "1 month");
-		st5.insertCourse("AWS", "2 month");
-		
-		st6.insertCourse("MySQL", "2 month");
-		st6.insertCourse("python", "2 month");
-		st6.insertCourse("AWS", "2 month");
+//		st.insertCourse("JS", "2 month");
+//		st.insertCourse("Java", "3 month");
+//		
+//		st1.insertCourse("python", "4 month");
+//		st1.insertCourse("AWS", "2 month");
+//		
+//		st2.insertCourse("MySQL", "2 month");
+//		st2.insertCourse("python", "2 month");
+//		st2.insertCourse("JS", "2 month");
+//		st2.insertCourse("React", "2 month");
+//		
+//		st3.insertCourse("python", "1 month");
+//		st3.insertCourse("Oracle", "3 month");
+//		
+//		st4.insertCourse("HTML", "3 month");
+//		st4.insertCourse("Java", "2 month");
+//		st4.insertCourse("python", "4 month");
+//		st4.insertCourse("AWS", "2 month");
+//		
+//		st5.insertCourse("JS", "1 month");
+//		st5.insertCourse("AWS", "2 month");
+//		
+//		st6.insertCourse("MySQL", "2 month");
+//		st6.insertCourse("python", "2 month");
+//		st6.insertCourse("AWS", "2 month");
 		
 //		st7.insertCourse("MySQL", "2 month");
 //		st7.insertCourse("python", "2 month");
@@ -89,7 +88,7 @@ public class StudentMain {
 		std[6] = st6;
 		std[7] = st7;
 		
-		for(Student list : std) {
+		for(Student list : std) {  // 싹다 출력
 			System.out.println(list);;
 		}
 		// 학생 전체명단 출력(학생 정보만)

@@ -8,7 +8,7 @@ import java.util.Scanner;
  * 		과자 : 2000
  * 		젤리 : 1000
  */
-class Product {
+class Product1 {
 	private String name;
 	private int price;
 	private int cnt;
@@ -16,8 +16,8 @@ class Product {
 	private String[] productName = new String[10];
 	private int[] productPrice = new int[10];
 	
-	public Product() {}
-	public Product(String name, int price) {
+	public Product1() {}
+	public Product1(String name, int price) {
 		this.name = name;
 		this.price = price;
 	}

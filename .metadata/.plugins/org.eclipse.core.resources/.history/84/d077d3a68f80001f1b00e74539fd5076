@@ -1,0 +1,74 @@
+package student;
+
+import java.util.Scanner;
+
+/* -- 학생 --
+ * 학번 : studNo
+ * 이름 : name
+ * 나이 : age
+ * 전화번호 : telNum
+ * 주소 : addr
+ * 수강과목들(배열) : subject
+ * 
+ * -- 과목 --
+ * 과목코드 : subCode
+ * 과목명 : subName
+ * 학점 : subPoint
+ * 시수 : subTime
+ * 교수명 : subProName
+ * 시간표 : subTimetable
+ * 강의장 : subState
+ * */
+
+public class StudentController implements Program {
+	// 멤버변수 추가
+	// student
+	private String studNo, name, telNum, addr;
+	private int age;
+	// subject
+	private String subCode, subName, subProName, subTimetable, subState;
+	private int subPoint, subTime;
+	
+	@Override
+	public void insertStudent(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void printStudent() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void searchStudent(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void modifyStudent(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteStudent(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void registSubject(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteSubject(Scanner scan) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
