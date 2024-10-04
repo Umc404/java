@@ -1,0 +1,33 @@
+package Lotto;
+
+import java.util.Scanner;
+//import java.util.ArrayList;
+
+public class LottoController {
+//	protected Lotto[] tryArr = new Lotto[5]; // 로또 6자리 묶어서 넣는 공간
+	private int tryNum[] = new int[6]; // 6자리 넣는공간
+	int tryCnt;
+	public void createLotto(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void createLottoAuto() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void insertLotto(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void checkLotto() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void printLotto() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

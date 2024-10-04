@@ -1,0 +1,21 @@
+package Lotto;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+// 여기서 
+
+public class Lotto {
+	protected int tryNum[] = new int[6];
+	int cnt = 0;
+	int num;
+	public Lotto() {}
+
+//	public void insertArr(int[] num) {
+////		for(int i=0; i<tryNum.length; i++) {
+//			this.num = num;
+////		}
+//	}
+
+
+}

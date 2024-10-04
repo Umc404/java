@@ -5,18 +5,22 @@ public class Subject {
 	private String subCode, subName, subProName, subTimetable, subState;
 	private int subPoint, subTime;
 	// index
-	private int cnt = 0;
+	private int cnt = 0; // ?
+	
+	// 멤버변수 / 생성자 / getter/setter / toString(수강정보)
 	
 	public Subject() {}
 	
-	public Subject(String subCode, String subName, int subPoint, int subTime, String subProName, String subTimetable, String subState) {
+	public Subject(String subCode, String subName) {
+//		, int subPoint, int subTime, String subProName, String subTimetable, String subState) {
+//	}
 		this.subCode = subCode;
 		this.subName = subName;
-		this.subPoint = subPoint;
-		this.subTime = subTime;
-		this.subProName = subProName;
-		this.subTimetable = subTimetable;
-		this.subState = subState;
+//		this.subPoint = subPoint;
+//		this.subTime = subTime;
+//		this.subProName = subProName;
+//		this.subTimetable = subTimetable;
+//		this.subState = subState;
 	}
 	
 	public void registSubject(String subCode, String subName, int subPoint, int subTime, String subProName, String subTimetable, String subState) {
@@ -28,7 +32,15 @@ public class Subject {
 		this.subTimetable = subTimetable;
 		this.subState = subState;
 	}
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Subject [subCode=" + subCode + ", subName=" + subName+ "]";
+	}
 
+	// getter / setter
 	public String getSubCode() {
 		return subCode;
 	}

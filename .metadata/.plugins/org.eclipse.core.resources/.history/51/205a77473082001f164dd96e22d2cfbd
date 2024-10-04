@@ -1,0 +1,68 @@
+package Lotto;
+
+import java.util.Scanner;
+//import java.util.ArrayList;
+
+public class LottoController {
+	// 당첨번호는 여러개 배열로 저장
+	private LottoExtend Lotto[] = new LottoExtend[5];
+	private int lCount = 0;
+	// 사용자 번호는 1개
+	private Lotto user = new Lotto();
+	
+	private int st = 0; // 회차 값
+	
+	public void createLotto(Scanner sc) {
+		// 수동 로또번호 입력
+		System.out.println("로또번호 입력 (중복X, 1~45, 숫자 6개)");
+		int tmp[] = new int[6];
+		for(int i=0; i<tmp.length; i++) {
+			tmp[i] = sc.nextInt();
+		}
+		if(isDuplicated(tmp)) {
+			System.out.println("값 중복. 오류 발생. 다시 입력하세요.");
+		} else {
+			user.insertNumbers(tmp);
+			System.out.println(user);
+		}
+	}
+	
+	// 수동으로 입력되는 로또번호의 중복체크, 범위체크
+	public boolean isDuplicated(int arr[]) {
+		// 중복 확인.
+		for(int i=0; i<arr.length; i++) {
+			for(int j=i+1; j<arr.length; j++) {
+				if(arr[i] == arr[j]) {
+					return true;
+				}
+			}
+		}
+		
+		// 범위 확인.
+		for(int i=0; i<arr.length; i++) {
+			if(arr[i]<0 || arr[i]>45) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public void createLottoAuto() {
+		// 자동 로또번호 입력
+		
+	}
+	public void insertLotto(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void checkLotto() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void printLotto() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

@@ -8,7 +8,7 @@ public interface Program {
 	
 	void insertStudent(Scanner scan);
 	void printStudent();
-	void searchStudent(Scanner scan);
+	int searchStudent(Scanner scan);
 	void modifyStudent(Scanner scan);
 	void deleteStudent(Scanner scan);
 	void registSubject(Scanner scan);

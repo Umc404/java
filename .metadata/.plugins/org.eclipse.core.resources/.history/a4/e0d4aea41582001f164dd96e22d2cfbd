@@ -1,0 +1,13 @@
+package Lotto;
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+// 여기서 
+
+public class Lotto {
+	protected int tryArr[] = new int[6];
+	int cnt = 0;
+	
+	public Lotto() {}
+}

@@ -1,0 +1,30 @@
+package Lotto;
+
+public class LottoController {
+	
+	public void passLottoNum() { // 수동
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void autoLottoNum() { // 자동
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void LottoNum() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void corLottoNum() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void tryLottoList() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

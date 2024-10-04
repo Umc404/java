@@ -1,0 +1,38 @@
+package Lotto;
+
+import java.util.Scanner;
+//import java.util.ArrayList;
+
+public class LottoController {
+	// 당첨번호는 여러개 배열로 저장
+	private LottoExtend Lotto[] = new LottoExtend[5];
+	private int lCount = 0;
+	// 사용자 번호는 1개
+	private Lotto user = new Lotto();
+	
+	private int st = 0; // 회차 값
+	
+	public void createLotto(Scanner sc) {
+		// 수동 로또번호 입력
+		
+	}
+	public void createLottoAuto() {
+		// 자동 로또번호 입력
+		
+	}
+	public void insertLotto(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+	public void checkLotto() {
+		// TODO Auto-generated method stub
+		
+	}
+	public void printLotto() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+
+}

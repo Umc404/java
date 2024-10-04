@@ -1,0 +1,13 @@
+package Lotto;
+
+// Lotto 에서 상속받고, 보너스번호 여기서 선언
+// 그 후 비교하고 몇개 맞췄는지 tryList[] 에 값 set
+// super. tryArr 가져와서 비교
+
+public class LottoExtend extends Lotto{
+	private int bonusNo;
+	
+	public LottoExtend() {}
+	
+	
+}
