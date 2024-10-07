@@ -1,0 +1,18 @@
+package day06;
+
+import java.time.LocalDateTime;
+
+public class Date02 {
+
+	public static void main(String[] args) {
+		LocalDateTime today = LocalDateTime.now();
+		System.out.println(today);
+		System.out.println(today.getYear());
+		System.out.println(today.getMonth());
+		
+		String t = today.toString();
+		System.out.println(t);
+		
+	}
+
+}

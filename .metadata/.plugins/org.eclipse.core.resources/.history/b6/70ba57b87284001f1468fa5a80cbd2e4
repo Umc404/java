@@ -1,0 +1,76 @@
+package day04;
+
+/* Silver 고객(할인 X) / Gold 고객(할인) / VIP 고객(할인)
+ * - Silver 고객
+ *   => 제품을 구매할 때 0% 할인 / 보너스 포인트 1% 적립
+ * - Gold 고객
+ *   => 제품을 구매할 때 10% 할인 / 보너스 포인트 2% 적립
+ * - VIP 고객
+ *   => 제품을 구매할 때 10% 할인 / 보너스 포인트 5% 적립
+ *   => 전담 상담사
+ *   
+ *   Customer / GoldCustomer / VIPCustmer 클래스 생성
+ *   GoldCustomer / VIPCustmer => Customer 클래스 상속
+ */
+
+public class CustomerMain {
+	public static void main(String[] args) {
+		
+		Customer cuList[] = new Customer[10];
+		
+		Customer cu1 = new Customer("testid","testname");
+		Customer cu2 = new Customer("cu4433","스티브");
+		Customer cu3 = new GoldCustomer("cu1546","홍길동");
+		Customer cu4 = new VIPCustomer("cua0113","유비빔", "BAEK");
+		
+		int cnt=0;
+		cuList[cnt] = cu1;
+		cnt++;
+		cuList[cnt] = cu2;
+		cnt++;
+		cuList[cnt] = cu3;
+		cnt++;
+		cuList[cnt] = cu4;
+		cnt++;
+		cuList[cnt] = new GoldCustomer("cu6652","라이너스");
+		cnt++;
+		cuList[cnt] = new VIPCustomer("cua7651","니나브","LOA");
+		cnt++;
+		cuList[cnt] = new VIPCustomer("cua7815","tester","1111");
+		cnt++;
+		
+		System.out.println("---------- 할인율 포인트 계산 1 ----------");
+		int price1 = 10000;
+		
+		for(int i=0; i<cnt; i++) {
+//			cuList[i].customerInfo();
+			System.out.println(cuList[i].getName() + " " + cuList[i].getCustomerGrade());
+			cuList[i].saleCalc(price1);
+			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+		}
+		System.out.println("---------- 할인율 포인트 계산 2 ----------");
+		int price2 = 35000;
+		for(int i=0; i<cnt; i++) {
+//			cuList[i].customerInfo();
+			System.out.println(cuList[i].getName() + " " + cuList[i].getCustomerGrade());
+			cuList[i].saleCalc(price1);
+			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+		}
+		System.out.println("################ 회원 정보 리스트 ################");
+		for(int i=0; i<cnt; i++) {
+			cuList[i].customerInfo();
+			System.out.println();
+		}
+//		cuList[1].getAgentID;
+		// agentID = 1111 => 3333 변경
+		for(int i=0; i<cnt; i++) {
+			if(((VIPCustomer) cuList[i]).getAgentID().equals("1111")) {
+				((VIPCustomer)cuList[i]).setAgentID("3333");
+			}
+		}
+		for(int i=0; i<cnt; i++) {
+			cuList[i].customerInfo();
+			System.out.println();
+		}
+	}
+}

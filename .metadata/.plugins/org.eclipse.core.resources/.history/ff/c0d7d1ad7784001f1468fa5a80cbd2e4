@@ -1,0 +1,23 @@
+package day06;
+
+import java.util.Calendar;
+
+public class Date01 {
+
+	public static void main(String[] args) {
+		/* 날짜 / 시간 클래스
+		 * Date 클래스 => Deprecated(비권장). 업데이트가 멈추고 다른 사용방법으로 우회.
+		 * Calendar => Date 후속작. 추상클래스 => 객체를 생성할 수 없음.
+		 * new 키워드로 객체 생성이 불가능.
+		 * getInstance() 메서드를 이용하여 객체를 얻어 옴.
+		 * 
+		 * */
+		Calendar c = Calendar.getInstance(); // 오늘 날짜 가져옴.
+		System.out.println(c);
+		// month 0~11 표현(배열방식) => +1 해야함.
+//		System.out.println(c.getTime());
+		int year = c.get(Calendar.YEAR);
+		System.out.println(year);
+	}
+
+}

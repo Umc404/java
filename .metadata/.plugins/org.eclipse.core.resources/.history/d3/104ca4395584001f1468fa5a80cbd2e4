@@ -1,0 +1,162 @@
+package day06;
+
+class Animal {
+	// 공통 속성
+	public void move() {
+		System.out.println("동물이 움직입니다.");
+	}
+}
+
+class Human extends Animal{
+
+	@Override
+	public void move() {
+		System.out.println("사람은 두발로 걷습니다.");
+	}
+	public void readBook() {
+		System.out.println("사람이 책을 읽습니다.");
+	}
+}
+
+class Tiger extends Animal {
+
+	@Override
+	public void move() {
+		System.out.println("호랑이가 네발로 어슬렁거립니다.");
+	}
+	public void hunting() {
+		System.out.println("호랑이가 사냥을 합니다.");
+	}
+}
+
+class Eagle extends Animal{
+
+	@Override
+	public void move() {
+		System.out.println("독수리가 하늘을 날아다닙니다.");
+	}
+	public void flying() {
+		System.out.println("독수리가 날라다닙니다. 그런데 한화는 아닌거같습니다.");
+	}
+	public void happy() {
+		System.out.println("한화는 행복합니다.");
+	}
+}
+
+class Dog {
+	public void move() {
+		System.out.println("강아지가 개처럼 뛰어옵니다.");
+	}
+}
+
+
+public class Polymorphism01 {
+
+	public static void main(String[] args) {
+		/* 객체지향 프로그램 4가지의 특징
+		 * - 프로그램을 독립된 단위(객체)의 객체들을 모아서 관계를 맺어 처리하는 형태
+		 * - 각각의 객체는 메세지를 주고 받으면서 데이터를 처리
+		 * - 메세지를 받을 경우(매개변수를 통해) / 메세지를 주는 경우(return)
+		 * - 추상화, 캡슐화(정보 은닉), 상속, 다형성
+		 * 
+		 * - 추상화(Abstract) - 핵심적인(공통적인) 코드만 보여주기.
+		 * - 구현된 부분과 구현되지 않은 부분으로 분리
+		 * - 개인(자식)이 구현해야 할 부분은 분리하여 처리.
+		 *
+		 * - 캡슐화(Encapsulation) - 데이터 보호(정보 은닉)
+		 * - 멤버변수(private)를 숨기는 형태, 메서드로 접근
+		 * - 멤버변수와 메서드를 하나로 묶어 처리하는 형태
+		 * - 은닉화 : 객체 내부의 정보를 숨겨 외부로 드러나지 않게 보호하는 것.
+		 * 
+		 * - 상속(Inheritance) - 코드 재사용(확장)
+		 * - 클래스를 상속받아서 수정하면 중복코드를 줄일 수 있음.
+		 * - 유지보수가 편함.
+		 * 
+		 * - 다형성(Polymorphism) - 객체 변환이 용이함.
+		 * - 하나의 코드가 여러 객체의 형태로 구현되어 실행되는 것.
+		 * - 코드는 같은데 들어오는 객체에 따라 다른 실행결과를 얻을 수 있음.
+		 * - 다형성을 잘 활용하면 유연하고, 확장성 있는, 유지보수가 편리한 프로그램을 만들 수 있음.
+		 */
+		Human human = new Human();
+		human.move();
+		human.readBook();
+		System.out.println("----------------------------");
+		Tiger tiger = new Tiger();
+		tiger.move();
+		tiger.hunting();
+		System.out.println("----------------------------");
+		Eagle eagle = new Eagle();
+		eagle.move();
+		eagle.flying();
+		eagle.happy();
+		
+		System.out.println("-- 조상의 객체로 자식의 객체를 생성 --");
+		// 조상의 클래스로 자식의 객체를 생성 가능
+		// 조상에게 상속받은 메서드만 실행 가능.
+		
+//		Human h = new Animal(); // 오류남. 상속받은 자식 객체로 부모객체 못만듦.
+		Animal hAnimal = new Human();
+		hAnimal.move();
+//		hAnimal.readBook(); // 사용 불가능. 실제 Human class에서만 생성된 메서드는 객체호출이 되지 않음.
+		Animal tAnimal = new Tiger();
+		tAnimal.move();
+		Animal eAnimal = new Eagle();
+		eAnimal.move();
+		
+		System.out.println();
+		System.out.println("---- 다형성 메서드 예시 ----");
+		Polymorphism01 ex01 = new Polymorphism01();
+		// 부모의 객체로 생성이 되었기 때문에 당연히 가능.
+		ex01.moveAnimal(tAnimal);
+		
+		Dog dog = new Dog();
+		dog.move();
+//		ex01.moveAnimal(dog); // animal class 상속받지 않아서 실행이 안됨.
+		
+		int cnt=0;
+		Animal[] aniList = new Animal[5];
+		aniList[cnt] = hAnimal;
+		cnt++;
+		aniList[cnt] = tAnimal;
+		cnt++;
+		aniList[cnt] = eAnimal;
+		cnt++;
+		System.out.println();
+		for(int i=0; i<cnt; i++) { // 범위선택 시 aniList.length 로 선택할 시 nullException 발생.
+			aniList[i].move();
+		}
+		System.out.println();
+		System.out.println("-- 다운 캐스팅 예시 --");
+		
+		// Human 클래스 객체에 Animal을 상속받은 Human 클래스 객체를 다운캐스팅한 예시.
+		Human h = (Human)hAnimal;
+		h.readBook();
+		
+//		Human e = (Human)tAnimal;
+//		e.readBook();
+		// tAnimal 은 tiger class에서 생성한 객체. 이 객체에 readbook 메서드가 없어 형이 맞지 않음. casting 에러.
+		
+		System.out.println("-- instanceof 연산자 --");
+		// instanceof : 객체가 해당 클래스의 형이 맞는지 확인
+		System.out.println(tAnimal instanceof Human); // Human class 에서 생성된 객체가 아니라서 false
+		System.out.println(tAnimal instanceof Tiger);// Tiger class 에서 생성된 객체가 맞아서 true
+		
+		Animal downCastingTest = eAnimal;
+//		System.out.println(downCastingTest); // 실행하면 주소값 출력. 값은 객체 내 생성된 메서드 호출해야함.
+//		System.out.println(downCastingTest.getClass());
+		downCastingTest.move();
+		
+		
+		if(downCastingTest instanceof Human) {
+//			((Human) downCastingTest).readBook();
+			Human testHuman = (Human)downCastingTest;
+			testHuman.readBook();
+		}else if(downCastingTest instanceof Human) {
+			
+		}
+	}
+	// 다형성 예시 메서드
+	public void moveAnimal(Animal animal) {		// 메서드 선언 안 소괄호에 Human h, Tiger t, Eagle e 같이 객체를 넣는 것은 가능. 다만 공통적으로 객체를 넣는 것이 유연함.
+		animal.move();
+	}
+}

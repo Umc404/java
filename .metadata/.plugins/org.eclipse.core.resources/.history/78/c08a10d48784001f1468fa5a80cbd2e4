@@ -1,0 +1,15 @@
+package day06;
+
+public class Exception02 {
+
+	public static void main(String[] args) {
+		// ArithmeticException : 0으로 나누었을 때 발생하는 Exception
+		// 1 2 + 1 2 - 1 2 * 1 0 / 1 0 %
+		
+
+	}
+	// 두 수를 입력받고, 연산자를 입력받아 사칙연산의 결과를 리턴하는 메서드
+	// int num1, int num2, char op
+	// return Type : double
+	
+}

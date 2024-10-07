@@ -1,0 +1,12 @@
+package day06;
+
+import java.time.LocalDateTime;
+
+public class Date02 {
+
+	public static void main(String[] args) {
+		LocalDateTime today = LocalDateTime.now();
+
+	}
+
+}

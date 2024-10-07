@@ -1,0 +1,14 @@
+package day06;
+
+public class Polymorphism01 {
+
+	public static void main(String[] args) {
+		/* 객체지향 프로그램 4가지의 특징
+		 * - 프로그램을 독립된 단위(객체)의 객체들을 모아서 관계를 맺어 처리하는 형태
+		 * - 각각의 객체는 메세지를 주고 받으면서 데이터를 처리
+		 * - 메세지를 받을 경우(매개변수를 통해) / 메세지를 주는 경우(return)
+		 */
+
+	}
+
+}

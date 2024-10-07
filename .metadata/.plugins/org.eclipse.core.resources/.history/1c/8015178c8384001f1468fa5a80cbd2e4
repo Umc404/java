@@ -1,0 +1,16 @@
+package day06;
+
+public class Exception01 {
+
+	public static void main(String[] args) {
+		// RuntimeException : 실행 예외 클래스
+		/* Exception : 예외
+		 * 개발자가 코드 구현 시 발생할 수 있는 에러를 예외
+		 * 예외처리 : 예뢰를 개발자가 처리하는 구문
+		 * 예외가 발생하면 예외 발생시점부터 코드는 중지
+		 * 
+		 */
+
+	}
+
+}

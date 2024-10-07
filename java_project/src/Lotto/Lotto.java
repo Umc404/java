@@ -12,7 +12,7 @@ public class Lotto {
 		return new Random().nextInt(45)+1;
 	}
 	
-	// 1. 랜던번호 6개 numbers[]에 채우는 메서드 (중복제거)
+	// 1. 랜덤번호 6개 numbers[]에 채우는 메서드 (중복제거)
 	protected void randomLotto() {
 		init();
 		int cnt=0;
