@@ -1,0 +1,25 @@
+package day07;
+
+public class ExceptionEx01 {
+
+	public static void main(String[] args) {
+		// 리턴 받은 배열을 출력
+		
+		int arr[] = null;
+	}
+	/* 메서드 생성
+	 * 기능 : size 입력받아(매개변수) size 만큼의 길이를 가지는 배열을 생성하여
+	 * 랜덤값을 채워 배열을 리턴
+	 * 랜덤값은 범위를 매개변수를 받아 start(시작값), count(변수)
+	 * - size가 0보다 작으면 예외 발생
+	 * - 랜덤값의 개수가 0이면 예외 발생 runtimeException
+	 * */
+	
+	/* 메서드
+	 * 기능 : 매개변수로 배열을 받아 랜덤값을 채우는 메서드
+	 * - size가 0보다 작으면 예외 발생
+	 * - 랜덤값의 개수가 0이면 예외 발생 runtimeException
+	 * - 배열이 null이면 예외발생
+	 * - 배열의 길이가 0보다 작으면 예외 발생
+	 * */
+}

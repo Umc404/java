@@ -1,0 +1,44 @@
+package day07;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class ListEx03 {
+
+	public static void main(String[] args) {
+		/* num 값을 숫자 List 생성하여 추가 => 출력
+		 * 합계 출력
+		 * 70점 이상인 인원 수 출력
+		 * 3/8 명
+		 * */
+		
+		String num = "45,78,98,65,84,54,64,31";
+		
+		String numArr[] = num.split(",");
+		int gradeArr[] = new int[numArr.length];
+		
+		for(int i=0; i<gradeArr.length; i++) {
+			gradeArr[i] = Integer.parseInt(numArr[i]);
+		}
+		for(int i=0; i<gradeArr.length; i++) {
+			System.out.print(gradeArr[i] + " ");
+		}
+		System.out.println();
+		
+		List<Integer> gradeList = new ArrayList<>();
+		for(int i=0; i<gradeArr.length; i++) {
+			gradeList.add(gradeArr[i]);
+		}
+		
+		System.out.println(gradeList);
+
+		int sum = 0;
+		for(Integer tmp : gradeList) {
+			sum += tmp;
+//			System.out.println(tmp);
+		}
+		System.out.println(sum);
+	}
+
+}

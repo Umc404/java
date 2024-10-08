@@ -1,0 +1,33 @@
+package day07;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListEx01 {
+
+	public static void main(String[] args) {
+		/* 하루 일과를 저장하는 list 생성 : string
+		 * 출력 for / 향상된 for / Iterator 출력
+		 */
+		List<String> todoList = new ArrayList<>();
+		
+		todoList.add("밥");
+		todoList.add("독서");
+		todoList.add("광부");
+		todoList.add("학원");
+		todoList.add("운동");
+		todoList.add("잠");
+		todoList.add("동호회 일정 계획");
+		
+		System.out.println(todoList);
+		
+		System.out.print("할 것들 : ");
+		for(int i=0; i<todoList.size()-1; i++) {
+			System.out.print(todoList.get(i)+", ");
+		}
+		System.out.println(todoList.get(todoList.size()-1));
+		// 정렬 list.sort(compare 구현체);
+
+	}
+
+}

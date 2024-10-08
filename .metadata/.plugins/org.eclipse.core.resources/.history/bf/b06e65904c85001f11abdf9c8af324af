@@ -1,0 +1,29 @@
+package day07;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListEx02 {
+
+	public static void main(String[] args) {
+		// 두 배열을 하나의 리스트로 합치기
+		// 정렬하여 출력(오름 / 내림)
+		
+		String arr1[] = {"a", "s", "d", "f", "g", "h"};
+		String arr2[] = {"q", "w", "e", "r", "t", "y"};
+		
+		List<String> arrList1 = new ArrayList<>();
+		for(int i=0; i<arr1.length; i++) {
+			arrList1.add(arr1[i]);
+		}
+		
+		List<String> arrList2 = new ArrayList<>();
+		for(int i=0; i<arr2.length; i++) {
+			arrList2.add(arr2[i]);
+		}
+		
+		arrList1.addAll(arrList2);
+		System.out.println(arrList1);
+	}
+
+}
