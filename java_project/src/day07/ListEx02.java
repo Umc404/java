@@ -18,13 +18,11 @@ public class ListEx02 {
 		
 		String arr1[] = {"a", "s", "d", "f", "g", "h"};
 		String arr2[] = {"q", "w", "e", "r", "t", "y"};
-		int arr3[] = {1, 2, 3, 4};
 		
 		List<String> listArr = Arrays.asList(arr1);
 		// listArr 은 주소값이 들어감. 배열값이 아님. listArr.addAll(list2) <= 이거 오류남.
 		List<String> list1 = new ArrayList<>(Arrays.asList(arr1));
 		List<String> list2 = new ArrayList<>(Arrays.asList(arr2));
-		List<int> list3 = new ArrayList<>(Arrays.asList(arr3));
 		
 		list1.addAll(list2);
 		System.out.println("#### list 합친 값 ####");

@@ -1,0 +1,14 @@
+package sale;
+
+public class Order extends Menu{
+	private int productCnt, cost;
+	
+	public Order() {}
+	
+	public Order(String proID, String name, int price, int productCnt, int cost) {
+		super(proID, name, price);
+		this.productCnt = productCnt;
+		this.cost = cost;
+		// TODO Auto-generated constructor stub
+	}
+}

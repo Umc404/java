@@ -1,0 +1,48 @@
+package sale;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SaleController {
+//	Menu menu = new Menu();
+//	Order order = new order();
+	
+	List<Menu> menuList = new ArrayList<>();
+	List<Order> orderList = new ArrayList<>();
+	
+	public void insertMenu(Scanner sc) {
+		
+	}
+
+	public void deleteMenu(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void modifyMenu(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printMenu() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void orderMenu(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void orderPrint() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void totalSale() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -1,0 +1,68 @@
+package sale;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SaleController {
+	
+	
+	private String proID, name;
+	private int price;
+	
+	private int orderNum;
+	private int productCnt, cost;
+	
+	List<Menu> menuList = new ArrayList<>();
+	List<Order> orderList = new ArrayList<>();
+	        
+	public void insertMenu(Scanner sc) {
+		System.out.println("제품번호, 이름, 가격 작성");
+		proID = sc.next();
+		name = sc.next();
+		price = sc.nextInt();
+		
+		Menu menuInfo = new Menu(proID, name, price); 
+		menuList.add(menuInfo);
+		System.out.println("메뉴가 추가되었습니다.");
+	}
+
+	public void deleteMenu(Scanner sc) {
+		System.out.println("삭제할 제품의 이름을 작성하세요");
+		String delProduct = sc.next();
+		
+		for(Menu m : menuList) {
+			if(m.getName() == delProduct) {
+				menuList.remove(m);
+				System.out.println("dddd");
+//			}
+		}
+		
+	}
+
+	public void modifyMenu(Scanner sc) {
+		System.out.println("수정할 제품의 이름을 작성하세요");
+		
+	}
+
+	public void printMenu() {
+		for(Menu m : menuList) {
+			System.out.println(m);
+//			System.out.println(m.getProID() + m.getName() + m.getPrice());
+		}
+	}
+
+	public void orderMenu(Scanner sc) {
+		
+	}
+
+	public void orderPrint() {
+		
+		
+	}
+
+	public void totalSale() {
+		
+	}
+
+}

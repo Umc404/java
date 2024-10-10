@@ -1,0 +1,75 @@
+package day07;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+// 1. 단어 등록 | 2.단어 검색 | 3. 단어 수정 | 4. 단어 출력 | 5. 단어 삭제 | 6. 종료
+
+public class WordController {
+	
+	HashMap<String, String> wordList = new HashMap<>();	
+	String word, mean;
+	
+	public void insertWord() {
+		wordList.put("apple", "사과");
+		wordList.put("orange", "오렌지");
+		wordList.put("pear", "배");
+		wordList.put("thirbm", "감");
+	}
+	
+	public void insertWord(Scanner scan) {
+		System.out.println("등록할 단어를 입력하세요. (단어, 뜻)");
+		word = scan.next();
+		mean = scan.next();
+		
+		wordList.put(word, mean);
+		System.out.println("단어등록 완료.");
+	}
+
+	public void searchWord(Scanner scan) {
+		System.out.println("검색할 단어를 입력하세요.");
+		String searchWord = scan.next();
+		
+		for(String key : wordList.keySet()) {
+			if(searchWord == key) {
+				System.out.println(searchWord + "의 검색결과 : " + wordList.get(key));
+			} 
+		}
+		System.out.println("검색결과가 없습니다.");
+	}
+
+	public void modifyWord(Scanner scan) {
+		System.out.println("수정할 단어를 입력하세요.");
+		String modifyWord = scan.next();
+		
+		for(String key : wordList.keySet()) {
+			if(modifyWord == key) {
+//				System.out.println(searchWord + "의 검색결과 : " + wordList.get(word));
+				System.out.println("수정사항을 입력하세요");
+				String modifyMean = scan.next();
+				wordList.put(modifyWord, modifyMean);
+				System.out.println("수정 완료");
+			}
+		}
+		System.out.println("검색결과가 없습니다.");
+	}
+
+	public void printWord() {
+		for(String s : wordList.keySet()) {
+			System.out.println(s + " : " + wordList.get(s));
+		}
+	}
+
+	public void deleteWord(Scanner scan) {
+		System.out.println("삭제할 단어를 입력하세요.");
+		String deleteWord = scan.next();
+		
+		for(String key : wordList.keySet()) {
+			if(deleteWord == key) {
+				wordList.remove(deleteWord);
+				System.out.println("단어 삭제 완료.");
+			} 
+		}
+	}
+	
+}

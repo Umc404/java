@@ -1,0 +1,6 @@
+package sale;
+
+public class Menu {
+	protected String proID, name;
+	protected int price;
+}

@@ -1,0 +1,38 @@
+package day07;
+
+import java.util.HashMap;
+
+public class Map01 {
+	public static void main(String[] args) {
+		/* Map
+		 * - 값을 2개 쌍으로 저장. key / value
+		 * - key : 중복 불가능, value : 중복 가능
+		 * - key가 index 대응
+		 * - index가 없으면 정렬, 중복 X
+		 * - HashMap 을 가장 많이 사용.
+		 * 홍길동 70
+		 * 김영이 80
+		 * Map<클래스,클래스> map = new HashMap<클래스, 클래스>();
+		 * map은 값이 2개이기 때문에, 향상된 for 문 / iterator 사용 불가.
+		 * map => key만 분리 => set으로 구성 후 출력.
+		 * 
+		 * list, set => add() : 추가
+		 * map => pub() : 추가
+		 * getKey() : 키에 해당하는 value 리턴
+		 */
+		 
+		HashMap<String, Integer> map = new HashMap<>();
+		map.put("철수", 78);
+		map.put("영희", 88);
+		map.put("상민", 38);
+		map.put("길동", 54);
+		map.put("영수", 93);
+		System.out.println(map);	// 선언했던 string, integer key(string)=value(integer) 방식으로 출력.
+		System.out.println(map.keySet());	// key만 출력 
+		
+		// 객체 선언 후 get() 사용하여 value 값 출력
+		String name = "길동";
+		System.out.println(map.get(name));		// "길동" 의 value 출력
+		System.out.println("영희");
+	}
+}

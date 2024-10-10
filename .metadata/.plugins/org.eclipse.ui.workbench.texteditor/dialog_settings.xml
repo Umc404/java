@@ -3,6 +3,11 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="collection"/>
+		<item value="compareto"/>
+		<item value="list"/>
+		<item value="str"/>
+		<item value="string"/>
 		<item value="cnt"/>
 		<item value="iscontain"/>
 		<item value="rank"/>
@@ -13,7 +18,6 @@
 		<item value="insert"/>
 		<item value="courseInfo"/>
 		<item value="final"/>
-		<item value="ln"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item key="selection" value="time"/>

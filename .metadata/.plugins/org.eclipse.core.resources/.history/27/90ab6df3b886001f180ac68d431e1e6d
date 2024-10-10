@@ -1,0 +1,24 @@
+package day07;
+
+import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class TreeSet02 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] score = {80, 78, 86, 46, 87, 98, 79, 34};
+		
+		TreeSet<Integer> set = new TreeSet<>();
+		for(int s : score) {
+			set.add(s);
+		}
+		System.out.println(set);
+		
+		// headSet() : value보다 작은값 / tailSet() : value 보다 큰 값
+		System.out.println(set.headSet(50));
+		System.out.println(set.tailSet(70));
+	}
+
+}
