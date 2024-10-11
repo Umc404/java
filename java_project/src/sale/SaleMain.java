@@ -26,6 +26,8 @@ public class SaleMain {
 			System.out.println("7. 전체 판매내역 | 8. 종료");
 			menu = sc.nextInt();
 			
+			k.addMenu();
+			
 			switch(menu) {
 			case 1:
 				k.insertMenu(sc);
@@ -40,7 +42,7 @@ public class SaleMain {
 				k.printMenu();
 				break;
 			case 5:
-				k.orderMenu(sc);
+				k.orderPick(sc);
 				break;
 			case 6:
 				k.orderPrint();
@@ -51,9 +53,11 @@ public class SaleMain {
 			case 8:
 				System.out.println("뿅");
 				break;
+			default:
+				System.out.println("없는 메뉴입니다.");
 			}
 			
-		} while(menu < 8);
+		} while(menu != 8);		// 이전 작성 : menu < 8
 		
 	}
 

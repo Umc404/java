@@ -1,0 +1,62 @@
+package day09;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Stream03 {
+
+	public static void main(String[] args) {
+		/* Student 클래스로 리스트 구성
+		 * Student 이름, 점수만 가지는 클래스
+		 * 
+		 * 학생 5명 추가하고 콘솔에 출력 Stream
+		 * 
+		 */
+		List<Student> student = new ArrayList<>();
+		
+		Student std1 = new Student("홍길동",80);
+		student.add(std1);
+		Student std2 = new Student("김철수",78);
+		student.add(std2);
+		Student std3 = new Student("바둑이",32);
+		student.add(std3);
+		Student std4 = new Student("김씨",76);
+		student.add(std4);
+		Student std5 = new Student("임꺽정",60);
+		student.add(std5);
+		
+		student.stream()
+//		.forEach(n -> {System.out.println(n.getName() +" : " + n.getScore());});
+		.forEach(n -> {System.out.println(n);});
+	}
+
+}
+class Student {
+	private String name;
+	private int score;
+	
+	public Student() {}
+	public Student(String name, int score) {
+		this.name = name;
+		this.score = score;
+	}
+		
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", score=" + score + "]";
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getScore() {
+		return score;
+	}
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	
+}

@@ -1,0 +1,19 @@
+package day09;
+
+import java.util.Arrays;
+
+public class Stream02 {
+
+	public static void main(String[] args) {
+		/* 배열에서 짝수만 출력(정렬). 중복되는 값이 있다면 제거
+		 */
+		int arr[] = {1,7,5,3,8,6,4,8,2,6,9,5,84,15,5,3,4,8};
+		
+		Arrays.stream(arr)
+		.distinct()									// 중복 제거.
+		.filter(n -> n%2 == 0)						// 짝수
+		.sorted()									// 오름차순 정렬.
+//		.forEach(n -> {System.out.println(n);});	// 배열 출력.
+		.forEach(System.out::print);
+	}
+}

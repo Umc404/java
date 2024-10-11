@@ -1,0 +1,9 @@
+package day09;
+
+public class Sale {
+	
+	// 멤버변수 id, menu, price
+	private K id;
+	private V menu;
+	private T price;
+}

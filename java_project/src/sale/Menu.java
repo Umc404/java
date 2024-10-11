@@ -27,7 +27,7 @@ public class Menu {
 
 	@Override
 	public String toString() {
-		return "제품번호 : " + proID + ", 이름 : " + name + ", 가격 : " + price;
+		return /*"제품번호 : " + proID + ", 이름 : " +*/ name + " : " + price + "원";
 	}
 
 	public String getProID() {

@@ -1,0 +1,93 @@
+package day09;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class StreamEx01 {
+
+	public static void main(String[] args) {
+		/* 여행사 상품
+		 * 여행비용이 15세 이상은 100만원, 미만은 50만원 계산
+		 * 고객 5명이 패키지 여행을 떠난다 를 가정할 때
+		 * 1. 비용 계산 => 출력
+		 * 2. 고객 명단 출력
+		 * 고객 클래스 생성하고 ArrayList 로 고객 관리
+		 * 
+		 * 예) 
+		 * 이름 : 이순신 나이 : 40 비용 : 100
+		 * 이름 : 신사임당 나이 : 38 비용 : 100
+		 * 이름 : 신짱구 나이 : 10 비용 : 50
+		 * 이름 : 신짱이 나이 : 5 비용 : 50
+		 * 총 여행경비 : xxx 만원
+		 * 20세 이상 고객명단 => 이름순으로 출력
+		 * 
+		 */
+		ArrayList<Customer> customer = new ArrayList<>();
+		
+		customer.add(new Customer("신형만",45));
+		customer.add(new Customer("봉미선",34));
+		customer.add(new Customer("신짱구",13));
+		customer.add(new Customer("신짱아",7));
+		customer.add(new Customer("김전일",26));
+		customer.add(new Customer("코난",12));
+		
+		System.out.println("#1. 고객명단");
+		customer.stream().forEach(n->{System.out.println(n);});
+		
+		int sum1 = customer.stream().mapToInt(n -> n.getPrice()).sum();
+		System.out.println("총 여행경비 : " + sum1);
+		
+		System.out.println();
+		
+		System.out.println("#2. 20세 이상 고객 명단");
+		customer.stream().filter(n -> n.getAge() >= 20)
+		.sorted(new Comparator<Customer>() {
+			@Override
+			public int compare(Customer o1, Customer o2) {
+				return o1.getName().compareTo(o2.getName());
+			}	
+		})
+		.forEach(n->{System.out.println(n);});
+		int sum2 = customer.stream().filter(n -> n.getAge() >= 20)
+				.mapToInt(n -> n.getPrice()).sum();
+		System.out.println("총 여행경비 : " + sum2);
+		
+	}
+}
+class Customer {
+	private String name;
+	private int age, price;
+	
+	public Customer() {}
+	public Customer(String name, int age) {
+		this.name = name;
+		this.age = age;
+		this.price = (age >= 15)? 100 : 50 ;
+	}
+	
+	@Override
+	public String toString() {
+		return "이름 : " + name + " 나이 : " + age + " 비용 : " + price;
+	}
+	
+	// getter / setter
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+}

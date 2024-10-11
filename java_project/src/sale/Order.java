@@ -5,13 +5,21 @@ public class Order extends Menu{
 	
 	public Order() {}
 	
-	public Order(String proID, String name, int price, int productCnt, int cost) {
+	public Order(String proID, String name, int price, int productCnt, int orderNum) {
 		super(proID, name, price);
+		this.orderNum = orderNum;
 		this.productCnt = productCnt;
 		this.cost = price * productCnt;
 		// TODO Auto-generated constructor stub
 	}
 
+	// toString 처리하기엔 좀 까다로움. => 
+	// 출력 메서드 생성. super.toString(); // 부모의 toString 호출
+	public void orderPrint() {
+		System.out.println(super.toString());
+		System.out.println(productCnt+"개 주문 => 금액 : " + cost);
+	}
+	
 	public int getOrderNum() {
 		return orderNum;
 	}
