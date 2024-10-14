@@ -1,0 +1,21 @@
+package day10;
+
+import java.util.HashMap;
+
+public class File05 {
+
+	public static void main(String[] args) {
+		// test.txt 파일을 읽어들여 map 에 저장
+		// 명단, 합계, 평균 출력
+		// 읽어들이는 파일은 모두 String
+		// 계산을 위해서 int 변환 필요.
+		// Integer.parseInt()
+		// 80점 이상 학생명단
+		
+		HashMap<String, Integer> list = new HashMap<>();
+		
+				
+		
+	}
+
+}

@@ -1,0 +1,29 @@
+package day10;
+
+import java.io.File;
+
+public class File06 {
+
+	public static void main(String[] args) {
+		// File 객체
+		// 파일 생성. 
+		// File.separator : 파일 경로 구분자(운영체제마다 다름) \(java) /(unix)
+		// txt, xml, json, csv
+		// 데이터 센터 => xml, json(가장 많이 사용)
+		
+		File f = new File("D:\\umc\\java_workspace\\java_project\\test1.txt");
+		System.out.println(f);
+		String name = f.getName();
+		System.out.println(name);
+		System.out.println(f.getPath());
+		System.out.println(f.getParent());
+
+		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+		
+		String f2 = f.toString();
+		System.out.println(f2);
+		String f2Name = f2.substring(f2.lastIndexOf(File.separator)+1);
+		System.out.println(f2Name);
+	}
+
+}

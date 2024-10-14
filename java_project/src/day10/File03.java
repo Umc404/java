@@ -1,0 +1,62 @@
+package day10;
+
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class File03 {
+
+	public static void main(String[] args) throws IOException {
+		// FileWriter 를 통해 파일 쓰기
+		
+		FileWriter fw = new FileWriter("writer1.txt");
+		for(int i=0; i<=10; i++) {
+			String data = i+"test \r\n";		// \r : 캐리지 리턴. 커서를 행의 앞으로 이동. 잘 사용하진 않음.
+			fw.write(data);						// 파일에 기록
+			fw.write("my project I/O Test \r\n");
+		}
+		fw.close();
+		
+		// 기존 파일에 데이터를 쓰려고 할 때 : 추가모드
+		
+		FileWriter fw2 = new FileWriter("writer.txt", true);
+		for(int i=11; i<=20; i++) {
+			String data = i+"test \r\n";		
+			fw2.write(data);						
+			fw2.write("my project I/O Test \r\n");
+		}
+		fw2.close();
+		
+		// PrintWriter
+		PrintWriter pw = new PrintWriter("writer2.txt");
+		
+		for(int i=0; i<=10; i++) {
+			String data = i + "\t PrintWriter Test. \r\n";
+			pw.write(data);
+		}
+		pw.close();
+		// 파일에 내용을 추가하려면..
+		
+		// 실행할 경우 위 pw에서 작성한 data가 삭제되고 실행됨
+//		PrintWriter pw2 = new PrintWriter("writer2.txt");
+		
+		PrintWriter pw2 = new PrintWriter(new FileWriter("writer2.txt", true));
+		for(int i=11; i<=20; i++) {
+			String data = i + "\t PrintWriter Test append. \r\n";
+			pw2.write(data);
+		}
+		pw2.close();
+		
+		// 바이트기반 스트림
+		// fileOutputStream을 이용한 파일 쓰기
+		FileOutputStream output = new FileOutputStream("out.txt");
+		for(int i=0; i<=10; i++) {
+			String data = i + "\t 한글로 써보기 Test \r\n";
+			// 바이트 기반 스트림이기 때문에 바이트 단위로 쓰기
+			output.write(data.getBytes());
+		}
+		output.close();
+		
+	}
+}

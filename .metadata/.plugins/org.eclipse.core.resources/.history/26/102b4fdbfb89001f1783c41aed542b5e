@@ -1,0 +1,162 @@
+package word;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+	/* 단어장 프로그램
+	 * Word class 생성
+	 *  1. 단어 등록 | 2.단어 검색 | 3. 단어 수정 | 4. 단어 출력 | 5. 단어 삭제 | 6. 단어파일로 출력 | 7. 종료
+	 * - 단어 뜻 list > List<String> = new ArrayList<>()
+	 * 
+	 * Word(equals 사용) : 단어가 같으면 같은 객체
+	 * txt 파일로 저장
+	 */
+public class Word {
+	List<Word> list = new ArrayList<>();
+	String word, mean;
+	int cnt = 1;
+	
+	public Word() {}
+	
+	public Word(String word, String mean) {
+//		this.cnt = cnt;
+		this.word = word;
+		this.mean = mean;
+	}
+	
+	public void insertWord(Scanner sc) throws IOException {
+		System.out.println("단어, 뜻 입력 : ");
+			word = sc.next();
+			mean = sc.next();
+			
+		list.add(new Word(word, mean));
+		// 여기다가 그 파일에 넣는거
+//		fw.write(word, mean);
+		
+		FileWriter fw = new FileWriter("word.txt");
+		try {
+			for(Word tmp : list) {
+				String wordInfo = tmp.getWord() + " " + tmp.getMean() +"\r\n";
+				fw.write(wordInfo);
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		fw.close();
+		System.out.println("등록 완료.");
+	}
+
+	public void searchWord(Scanner sc) throws IOException {
+		System.out.println("검색할 단어를 입력하세요.");
+		int res = -1;
+		String srWord = sc.next();
+		
+		for(Word tmp : list) {
+			if(tmp.getWord().equals(srWord)) {
+				System.out.println(tmp.getWord() +" : " + tmp.getMean());
+				res = 1;
+			}
+		}
+		if(res == -1) {
+			System.out.println("검색결과 없음.");
+		}
+		
+	}
+
+	public void updateWord(Scanner sc) throws IOException {
+		System.out.println("수정할 단어를 입력하세요.");
+		int res = -1;
+		String upWord = sc.next();
+		
+		for(Word tmp : list) {
+			if(tmp.getWord().equals(upWord)) {
+				System.out.println("수정할 뜻을 입력하세요.");
+				String upMean = sc.next();
+				tmp.setMean(upMean);
+				res = 1;
+				System.out.println("수정 완료.");
+			}
+		}
+		if(res == -1) {
+			System.out.println("수정할 단어 없음.");
+		}
+		FileWriter fw = new FileWriter("word.txt");
+		try {
+			for(Word tmp : list) {
+				String wordInfo = tmp.getWord() + " " + tmp.getMean() +"\r\n";
+				fw.write(wordInfo);
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		fw.close();
+	}
+
+	public void printWord() {
+		for(Word tmp : list) {
+			System.out.println(tmp);
+		}
+	}
+
+	public void deleteWord(Scanner sc) {
+		System.out.println("삭제할 단어를 입력하세요.");
+		int res = -1;
+		String delWord = sc.next();
+		
+		for(Word tmp : list) {
+			if(tmp.getWord().equals(delWord)) {
+				list.remove(tmp);
+				res = 1;
+				System.out.println("삭제 완료.");
+			}
+		}
+		if(res == -1) {
+			System.out.println("삭제할 단어 없음.");
+		}
+	}
+
+	public void txtPrintWord() {
+		
+	}
+
+	@Override
+	public String toString() {
+		return "단어 : " + word + " / 뜻 : " + mean;
+	}
+
+	// getter / setter
+	public List<Word> getList() {
+		return list;
+	}
+
+	public void setList(List<Word> list) {
+		this.list = list;
+	}
+
+	public String getWord() {
+		return word;
+	}
+
+	public void setWord(String word) {
+		this.word = word;
+	}
+
+	public String getMean() {
+		return mean;
+	}
+
+	public void setMean(String mean) {
+		this.mean = mean;
+	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+	
+}

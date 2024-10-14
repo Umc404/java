@@ -1,0 +1,56 @@
+package day10;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+
+public class File05 {
+
+	public static void main(String[] args) throws IOException{
+		// test.txt 파일을 읽어들여 map 에 저장
+		// 명단, 합계, 평균 출력
+		// 읽어들이는 파일은 모두 String
+		// 계산을 위해서 int 변환 필요.
+		// Integer.parseInt()
+		// 80점 이상 학생명단
+		
+		HashMap<String, Integer> list = new HashMap<>();
+		BufferedReader br = new BufferedReader(new FileReader("test.txt"));
+		
+		while(true) {
+			String line = br.readLine();
+			if(line == null) {
+				break;
+			}
+			String[] info = line.split("\t");
+			
+			list.put(info[0], Integer.parseInt(info[1]));
+		}
+		br.close();
+		System.out.println("#### 전체 리스트 ####");
+		for(String tmp : list.keySet()) {
+				System.out.println(tmp + " : " + list.get(tmp));
+		}
+		System.out.println();
+		
+		System.out.println("#### 합계 ####");
+		int sum = 0;
+		for(String tmp : list.keySet()) {
+			sum += list.get(tmp);
+		}
+		System.out.println(sum);
+		
+		System.out.println("#### 평균 ####");
+		System.out.println(sum/list.size());
+		
+		System.out.println("#### 80점 이상자 리스트 ####");
+		for(String tmp : list.keySet()) {
+			if(list.get(tmp) >= 80) {
+				System.out.println(tmp + " : " + list.get(tmp));
+			}
+		}
+		
+	}
+
+}

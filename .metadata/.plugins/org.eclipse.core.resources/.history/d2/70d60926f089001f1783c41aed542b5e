@@ -1,0 +1,37 @@
+package word;
+
+import java.util.Scanner;
+
+public class Word {
+
+	public void insertWord(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void searchWord(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updateWord(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void printWord() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void deleteWord(Scanner sc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void txtPrintWord() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

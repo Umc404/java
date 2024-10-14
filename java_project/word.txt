@@ -1,0 +1,5 @@
+단어 : coffee	뜻 : 직장인의_회복약
+단어 : candy	뜻 : 사탕
+단어 : glasses	뜻 : 안경
+단어 : computer	뜻 : 밥줄
+단어 : game	뜻 : 오락
