@@ -1,0 +1,32 @@
+-- 학생관리 프로그램 --
+
+1. 학생등록 2. 학생 리스트 3. 학생 검색(내 정보 보기)
+4. 정보 수정 5. 학생삭제 6. 종료
+
+학생 db class 생성
+번호 auto_increment
+학번 이름 생년월일(00-00-00) 전화번호 str 주소 등록일자(now(0)
+
+admitflag 0 휴학 1 재학 2 졸업
+
+리스트 보기 => 학번, 이름 => print()
+내정보 보기 => 전부 * => toString 수정
+
+user db 그대로 사용.
+
+한 학생이 여러 과목을 수강 
+한 단어가 여러 뜻을 가진다
+한 상품에 여러 사람이 주문한다
+=> 테이블 분리 1차정규화
+
+create table student (
+num int auto_increment,
+studnum varchar(10) not null,
+studname varchar(10) not null,
+admitflag int default 1,
+birthdt varchar(15),
+telnum varchar(15),
+addr varchar(20),
+regdate now(),
+primary key(num)
+);

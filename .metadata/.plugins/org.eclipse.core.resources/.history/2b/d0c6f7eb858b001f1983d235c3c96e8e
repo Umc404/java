@@ -1,0 +1,120 @@
+package jdbc_student;
+
+public class Student {
+	private int num;
+	private String stdnum, stdname;
+	private int admitflag;
+	private String birthdt, telnum, addr, regdate;
+	
+	public Student() {}
+	
+	// 학생 등록_입력
+	public Student(String stdnum, String stdname, String birthdt, String telnum, String addr) {
+		this.stdnum = stdnum;
+		this.stdname = stdname;
+		this.birthdt = birthdt;
+		this.telnum = telnum;
+		this.addr = addr;
+	}
+	// 재학생_휴학생 리스트_출력(데이터 : 학번, 이름) : 우선 학생리스트 차후에 this.admitflag 추가
+	public Student(String stdnum, String stdname) {
+		this.stdnum = stdnum;
+		this.stdname = stdname;
+	}
+	
+	// 학생 검색 : 상세정보_출력(데이터 : 전부)
+	public Student(int num, String stdnum, String stdname, int admitflag, String birthdt, String telnum, String addr, String regdate) {
+		this(stdnum, stdname, birthdt, telnum, addr);
+		this.num = num;
+		this.admitflag = admitflag;
+		this.regdate = regdate;
+	}
+	// 학생 정보 수정_입력
+	public Student(String stdname, String telnum, String addr, int num) {
+		this.stdnum = stdname;
+		this.telnum = telnum;
+		this.addr = addr;
+		this.num = num;
+	}
+	// 학생 재학구분
+	public Student(String stdnum, int admitflag) {
+		this.stdnum = stdnum;
+		this.admitflag = admitflag;
+	}
+
+	@Override
+	public String toString() {
+		return "학번 : " + stdnum + " 이름 : " + stdname + "재학 구분 : "
+				+ (admitflag == 1? "재학":"휴학") + "\n생년월일 : " + birthdt
+				+ " 주소 : " + addr + " 등록일자 : " + regdate;
+	}
+	
+	public String studentList() {
+		return "학번 : " + stdnum + " 이름 : " + stdname;
+	}
+	// getter / setter
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public String getStdnum() {
+		return stdnum;
+	}
+
+	public void setStdnum(String stdnum) {
+		this.stdnum = stdnum;
+	}
+
+	public String getStdname() {
+		return stdname;
+	}
+
+	public void setStdname(String stdname) {
+		this.stdname = stdname;
+	}
+
+	public int getAdmitflag() {
+		return admitflag;
+	}
+
+	public void setAdmitflag(int admitflag) {
+		this.admitflag = admitflag;
+	}
+
+	public String getBirthdt() {
+		return birthdt;
+	}
+
+	public void setBirthdt(String birthdt) {
+		this.birthdt = birthdt;
+	}
+
+	public String getTelnum() {
+		return telnum;
+	}
+
+	public void setTelnum(String telnum) {
+		this.telnum = telnum;
+	}
+
+	public String getAddr() {
+		return addr;
+	}
+
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+	
+}

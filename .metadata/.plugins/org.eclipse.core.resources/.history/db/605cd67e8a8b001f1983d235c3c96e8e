@@ -1,0 +1,15 @@
+package jdbc_student;
+
+import java.util.List;
+
+public interface Service {
+
+	int insert(Student s);
+
+	List<Student> getList();
+
+	Student getStudent(String search);
+
+	Student updStudent(String update);
+
+}

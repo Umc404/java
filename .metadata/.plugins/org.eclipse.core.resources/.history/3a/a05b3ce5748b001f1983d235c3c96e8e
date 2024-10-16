@@ -1,0 +1,24 @@
+package jdbc_student;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import jdbc.DatabaseConnection;
+
+public class StudentDAOImp implements DAO {
+	
+	private Connection conn;
+	private PreparedStatement pst;
+	private String query = "";
+	
+	public StudentDAOImp() {
+		DatabaseConnection dbc = DatabaseConnection.getInstance();
+		conn = dbc.getConnection();
+	}
+	@Override
+	public int insert(Student s) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

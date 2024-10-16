@@ -1,0 +1,12 @@
+package jdbc;
+
+public class ProductServiceTmp1 implements Service {
+	/* service <-> DAO */
+	// 생성자로 DAO 객체와 연결
+	private DAO dao; // interface
+	
+	@Override
+	public int insert(Product p) {
+		return 0;
+	}
+}

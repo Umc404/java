@@ -1,0 +1,67 @@
+낚시
+
+회원가입 유저
+
+user
+userid auto increment
+id varchar
+pw varchar
+nickname varchar
+money int as 미끼수
+
+fish
+fishno
+fishname
+fishsize 메서드
+|
+drop table
+장소번호
+장소이름
+물고기번호
+|
+장소
+장소번호 pk
+이름 name
+
+1 베스
+2 금붕어
+3 구피
+4 피래미
+5 꽝
+
+inventory table
+fishno
+
+
+미끼 떨어지면 시마이
+or 스답하면
+
+남은 미끼수
+낚은것들 싹다 나열?
+
+
+rank
+
+모션 도트 대잔치 thread
+
+
+호수 정하기 한강 영산강 이런거
+
+낚은거 물고기 저장하는것들
+랭킹
+
+잡는다 못잡는다 나누고
+
+돈 개념으로 받아서
+낚시대 업글이나 떡밥구매
+
+미끼 = 기회
+
+미끼 == 0
+종료하실? y / n
+물고기
+
+개인 기준으로
+별자리운세 생년월일 입력하면 오늘운세 쫘아악 작성
+
+random

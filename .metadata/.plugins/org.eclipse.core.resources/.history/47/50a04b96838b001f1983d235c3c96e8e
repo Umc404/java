@@ -1,0 +1,13 @@
+package jdbc_student;
+
+import java.util.List;
+
+public interface DAO {
+
+	int insert(Student s);
+
+	List<Student> list();
+
+	Student search();
+
+}

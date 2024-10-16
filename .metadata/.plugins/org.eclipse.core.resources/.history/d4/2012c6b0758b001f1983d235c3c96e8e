@@ -1,0 +1,13 @@
+package jdbc_student;
+
+public class Textest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String date = "950404";
+		System.out.println(date.substring(0,2));
+		System.out.println(date.substring(3,2));
+		System.out.println(date.substring(5,2));
+	}
+
+}

@@ -1,0 +1,43 @@
+package jdbc_student;
+
+public class Student {
+	private int num;
+	private String studnum, studname;
+	private int admitflag;
+	private String birthdt, telnum, addr, regdate;
+	
+	public Student() {}
+	
+	// 학생 등록_입력
+	public Student(String studnum, String studname, String birthdt, String telnum, String addr) {
+		this.studnum = studnum;
+		this.studname = studname;
+		this.birthdt = birthdt;
+		this.telnum = telnum;
+		this.addr = addr;
+	}
+	// 재학생_휴학생 리스트_출력(데이터 : 학번, 이름)
+	public Student(String studnum, String studname) {
+		this.studnum = studnum;
+		this.studname = studname;
+	}
+	
+	// 학생 검색 : 상세정보_출력(데이터 : 전부)
+	public Student(int num, String studnum, String studname, int admitflag, String birthdt, String telnum, String addr, String regdate) {
+		this.num = num;
+		this.studnum = studnum;
+		this.studname = studname;
+		this.admitflag = admitflag;
+		this.birthdt = birthdt;
+		this.telnum = telnum;
+		this.addr = addr;
+		this.regdate = regdate;
+	}
+	// 학생 정보 수정_입력
+	
+	// 학생 재학구분
+	public Student(String studnum, int admitflag) {
+		this.studnum = studnum;
+		this.admitflag = admitflag;
+	}
+}

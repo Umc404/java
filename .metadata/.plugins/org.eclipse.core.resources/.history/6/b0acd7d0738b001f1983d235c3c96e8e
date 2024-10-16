@@ -1,0 +1,11 @@
+package jdbc_student;
+
+public class StudentDAOImp implements DAO {
+
+	@Override
+	public int insert(Student s) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

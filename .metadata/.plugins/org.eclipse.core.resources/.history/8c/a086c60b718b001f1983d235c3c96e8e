@@ -1,0 +1,23 @@
+package jdbc_student;
+
+import java.util.Scanner;
+
+//1. 학생등록 2. 학생 리스트 3. 학생 검색(내 정보 보기)
+//4. 정보 수정 5. 학생삭제 6. 종료
+
+public class StudentController {
+	private Scanner scan;
+	private Service svc;
+	private boolean flag;
+	
+	public StudentController() {
+		scan = new Scanner(System.in);
+		svc = new StudentServiceImp();
+		flag = true;
+		printMenu();
+	}
+	
+	private void printMenu() {
+		
+	}
+}

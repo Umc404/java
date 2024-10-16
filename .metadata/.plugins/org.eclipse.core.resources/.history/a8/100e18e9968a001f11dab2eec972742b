@@ -1,0 +1,14 @@
+package day11;
+
+public class Thread03 {
+
+	public static void main(String[] args) {
+		// 1~50, 51~100 까지의 합을 구하는 두개의 thread 생성
+		// 그 결과 확인
+		
+		// 두개의 Thread가 실행되고 난 후
+		// Thread-0 1~50 까지의 합계 출력
+		// Thread-1 51~100 까지의 합계 출력
+	}
+
+}

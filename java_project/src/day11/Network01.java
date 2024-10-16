@@ -1,0 +1,28 @@
+package day11;
+
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.URL;
+
+public class Network01 {
+
+	public static void main(String[] args) throws IOException {
+		// 인터넷 주소의 정보를 확인
+		InetAddress ip = null;
+		ip = InetAddress.getByName("www.naver.com");		// try~catch 해야함. 지금은 throws 처리
+		System.out.println(ip);
+		System.out.println(ip.toString());					// 둘 다 www.naver.com/223.130.192.248
+		System.out.println(ip.getHostAddress());			// 223.130.192.248
+		
+		URL url = new URL("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=kbl");	// try~catch 해야함. 지금은 throws 처리
+		// url : naver kbl 검색결과
+		System.out.println(url.getAuthority());
+		System.out.println(url.getDefaultPort());
+		System.out.println(url.getProtocol());
+		System.out.println(url.getHost());
+		System.out.println(url.getQuery());
+		System.out.println(url.getPath());
+		
+	}
+
+}

@@ -1,0 +1,121 @@
+package jdbc_student;
+
+import java.util.List;
+import java.util.Scanner;
+
+//1. 학생등록 2. 학생 리스트 3. 학생 검색(내 정보 보기)
+//4. 정보 수정 5. 학생삭제 6. 종료
+
+public class StudentController {
+	private Scanner scan;
+	private Service svc;
+	private boolean flag;
+	
+	public StudentController() {
+		scan = new Scanner(System.in);
+		svc = new StudentServiceImp();
+		flag = true;
+		printMenu();
+	}
+	
+	private void printMenu() {
+		while(flag) {
+			System.out.println("=== 학생관리 프로그램 ===");
+			System.out.println("1. 학생 등록  |  2. 학생 명단  |  3. 학생 검색(상세정보)");
+			System.out.println("4. 학생정보 수정  |  5. 학생 삭제   |   6. 재/휴학 신청  |  7. 종료");
+			System.out.println("menu >");
+			int menu = scan.nextInt();
+			
+			switch(menu) {
+			case 1: regist();			break;
+			case 2: list();				break;
+			case 3: search();			break;
+			case 4: update();			break;
+			case 5: delete();			break;
+			case 6: switchsubmit(); 	break;
+			case 7:
+				flag = false;
+				break;
+//			case 7: break;
+			default: System.out.println("잘못 입력하셨어요.");
+			}
+		}
+	}
+
+	private void regist() {
+		// String studnum, String studname, String birthdt, String telnum, String addr
+		System.out.println("학번 입력 : ");
+		String stdnum = scan.next();
+		System.out.println("이름 입력 : ");
+		String stdname = scan.next();
+		System.out.println("생년월일 입력(yymmdd 방식 입력) : ");
+		String birthdt = scan.next();
+		System.out.println("전화번호 입력 : ");
+		String telnum = scan.next();
+		System.out.println("주소 입력 : ");
+		String addr = scan.next();
+		
+		Student s = new Student(stdnum, stdname, birthdt, telnum, addr);
+		int isOk = svc.insert(s);
+		System.out.println("학생 등록 > " + (isOk > 0? "성공":"실패"));
+	}
+
+	private void list() {
+		List<Student> list = svc.getList();
+		
+		for(Student p : list) {
+			System.out.println(p.studentList());
+		}
+		System.out.println();
+	}
+
+	private void search() {
+		System.out.println("검색할 학생 학번 : ");
+		String search = scan.next();
+		Student s = svc.getStudent(search);
+		System.out.println(s);
+	}
+
+	private void update() {
+		// String stdname, String telnum, String addr, int num
+		System.out.println("수정할 학생 학번 : ");
+		String stdnum = scan.next();
+		System.out.println("이름 입력 : ");
+		String stdname = scan.next();
+		System.out.println("전화번호 입력 : ");
+		String telnum = scan.next();
+		System.out.println("주소 입력 : ");
+		String addr = scan.next();	
+		
+		System.out.println(stdname + " / " + telnum + " / " + addr);
+		
+		Student s = new Student(stdname, telnum, addr, stdnum);
+		int isOk = svc.updStudent(s);
+		
+		System.out.println("학생정보 수정 > " + (isOk > 0? "성공":"실패"));
+	}
+
+	private void delete() {
+		System.out.println("삭제할 학번을 입력하세요.");
+		String stdnum = scan.next();
+		
+		Student s = new Student(stdnum);
+		int isOk = svc.delete(s);
+		
+		System.out.println("학생 삭제 > " + (isOk > 0? "성공":"실패"));
+	}
+
+	private void switchsubmit() {
+//		System.out.println("준비중입니다.");
+		System.out.println("재학구분을 변경할 학번을 입력하세요.");
+		String stdnum = scan.next();
+		System.out.println("분류항목을 입력하세요.(0 : 휴학, 1 : 재학, 2 : 졸업)");
+		int admit = scan.nextInt();
+		
+		Student s = new Student(stdnum, admit);
+		int isOk = svc.admitflag(s);
+		System.out.println(isOk > 0? "학생의 분류가 변경되었습니다. 현재 : "
+										+ (admit == 1? "재학":(admit==0? "휴학":"졸업"))
+										:"분류 변경 실패");
+	}
+}

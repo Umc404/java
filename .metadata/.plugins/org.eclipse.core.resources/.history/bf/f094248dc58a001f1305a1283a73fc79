@@ -1,0 +1,42 @@
+package jdbc;
+
+import java.sql.Connection;
+
+public class DatabaseConnection {
+	/* DB 접속 객체
+	 * DB Driver, url, user, password
+	 * com.mysql.cj.jdbc.Driver
+	 * jdbc:mysql://localhost:3306/DB명
+	 * 
+	 */
+	private static DatabaseConnection dbc = new DatabaseConnection();
+	private Connection conn = null;	
+	
+	private String jdbcDriver = "com.mysql.cj.jdbc.Driver";
+	private String jdbcUrl = "jdbc:mysql://localhost:3306/javaDB";
+	
+	// 생성자
+	private DatabaseConnection() {
+		// 드라이버를 로드하기 위한 메서드
+		try {
+			Class.forName(jdbcDriver);
+		} catch (ClassNotFoundException e) {
+			// 드라이버를 찾을 수 없을 경우.
+			System.out.println("드라이버를 찾을 수 없습니다.");
+			e.printStackTrace();
+		}
+	}
+	
+	public static DatabaseConnection getInstance() {
+		return dbc;
+	}
+	
+	public Connection getConnection() {
+		return conn;
+	}
+	
+	
+	
+	
+	
+}

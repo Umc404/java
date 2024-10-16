@@ -1,0 +1,16 @@
+package day11;
+
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
+public class Network01 {
+
+	public static void main(String[] args) throws UnknownHostException {
+		// 인터넷 주소의 정보를 확인
+		InetAddress ip = null;
+		ip = InetAddress.getByName("www.naver.com");		// try~catch 해야함. 지금은 throws cjfl
+		System.out.println(ip);								
+		System.out.println(ip.getHostAddress());			// 
+	}
+
+}

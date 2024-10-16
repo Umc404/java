@@ -1,0 +1,47 @@
+package jdbc_student;
+
+import java.util.List;
+
+public class StudentServiceImp implements Service {
+	
+	private DAO dao;
+	public StudentServiceImp() {
+		dao = new StudentDAOImp();
+	}
+	@Override
+	public int insert(Student s) {
+		System.out.println("학생등록 serviceTmp 성공");
+		return dao.insert(s);
+	}
+	@Override
+	public List<Student> getList() {
+		System.out.println("학생 리스트 serviceTmp 성공");
+		return dao.list();
+	}
+	@Override
+	public Student getStudent(String search) {
+		System.out.println("학생 데이터 검색 serviceTmp 성공");
+		return dao.search(search);
+	}
+	@Override
+	public int updStudent(Student s) {
+		System.out.println("학생 데이터 수정 serviceTmp 성공");
+		return dao.update(s);
+	}
+	@Override
+	public int delete(Student s) {
+		System.out.println("학생 데이터 삭제 serviceTmp 성공");
+		return dao.delete(s);
+	}
+	@Override
+	public int admitflag(Student s) {
+		System.out.println("학생 재학구분 조정 serviceTmp 성공");
+		return dao.updAdmit(s);
+	}
+	@Override
+	public Student getAdmit(int admit) {
+		System.out.println("재학분류 리스트 serviceTmp 성공");
+		return dao.selectAdmit(admit);
+	}
+
+}

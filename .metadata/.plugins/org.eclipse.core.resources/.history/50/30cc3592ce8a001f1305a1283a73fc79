@@ -1,0 +1,8 @@
+package jdbc;
+
+public interface DAO {
+
+	int insert(Product p);
+	
+	List<Product> selectList();
+}

@@ -1,0 +1,46 @@
+package jdbc;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+public class ProductDAOImp1 implements DAO {
+	/* DAO <-> DB */
+	private Connection conn;
+	private PreparedStatement pst;		// sql 구문은 실행시키는 기능을 가진 객체
+	private String query=""; 			// 쿼리문 저장 string
+	
+	public ProductDAOImp1() {
+		// DBConnection class 생성
+		DatabaseConnection dbc = DatabaseConnection.getInstance();
+		conn = dbc.getConnection();
+	}
+	
+	// sql 처리
+	
+	@Override
+	public int insert(Product p) {
+		// product 객체를 등록하고, isOk 를 리턴
+		System.out.println("insert DAOImp1 success.");
+		query = "insert into product(pname, price, madeby) values(?,?,?)";
+		try {
+			pst = conn.prepareStatement(query);
+			// ? 반드시 순서대로 처리 (자료형을 기재)
+			pst.setString(1, p.getPname());
+			pst.setInt(2, p.getPrice());
+			pst.setString(3, p.getMadeby());
+			// insert, update, delete => 1 row(s) affected 처리만 함.
+			// 결과의 행 수만 리턴 => executeUpdate(); int 로 리턴
+			// select => 목록 => executeQuery(); List 로 리턴
+			
+		} catch (SQLException e) {
+			// insert error
+			System.out.println("insert error.");
+			e.printStackTrace();
+		}
+		
+		
+		
+		return 0;
+	}
+}

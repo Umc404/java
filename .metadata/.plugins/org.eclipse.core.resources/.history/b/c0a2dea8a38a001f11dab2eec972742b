@@ -1,0 +1,12 @@
+package day11;
+
+public class Singeton01 {
+
+	public static void main(String[] args) {
+		/* 디자인 패턴 : 개발자들이 개발 과정에서 하나의 패턴으로 묶어놓은 코드 조합
+		 * 디자인 패턴 중 하나
+		 * https://refactoring.guru/ko/design-patterns/java
+		 */
+	}
+
+}

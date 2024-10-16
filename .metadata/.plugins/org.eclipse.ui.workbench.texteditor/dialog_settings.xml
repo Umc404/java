@@ -3,21 +3,21 @@
 	<item key="hasShownOverlayPopupBefore" value="true"/>
 	<item key="replaceBarOpen" value="false"/>
 	<list key="searchhistory">
+		<item value="studname"/>
+		<item value="stdname"/>
+		<item value="stud"/>
+		<item value="prepare"/>
+		<item value="cnt"/>
+		<item value="wordInfo"/>
 		<item value="collection"/>
 		<item value="compareto"/>
 		<item value="list"/>
 		<item value="str"/>
 		<item value="string"/>
-		<item value="cnt"/>
 		<item value="iscontain"/>
 		<item value="rank"/>
 		<item value="lottoextend"/>
 		<item value="st++"/>
-		<item value="[]"/>
-		<item value="course"/>
-		<item value="insert"/>
-		<item value="courseInfo"/>
-		<item value="final"/>
 	</list>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item key="selection" value="time"/>

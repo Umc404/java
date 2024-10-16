@@ -1,0 +1,45 @@
+package jdbc;
+
+import java.util.List;
+
+public class ProductServiceImp1 implements Service {
+	/* service <-> DAO */
+	// 생성자로 DAO 객체와 연결
+	private DAO dao; // interface
+	public ProductServiceImp1() {
+		dao = new ProductDAOImp1();
+	}
+	
+	@Override
+	public int insert(Product p) {
+		// 실제 구현 영역
+		System.out.println("상품등록 serviceImp1 success.");
+		// DAO 에게 DB 저장을 요청.
+		// dao 요청 시 메서드명은 sql 구문과 비슷하게 작성하는 것이 일반적.
+		return dao.insert(p);
+	}
+
+	@Override
+	public List<Product> getList() {
+		System.out.println("list serviceImp1 success.");
+		return dao.selectList();
+	}
+
+	@Override
+	public Product getProduct(int pno) {
+		System.out.println("product serviceImp1 success.");
+		return dao.selectProduct(pno);
+	}
+
+	@Override
+	public int update(Product p) {
+		System.out.println("update serviceImp1 success.");
+		return dao.update(p);
+	}
+
+	@Override
+	public Product delete(Product p) {
+		System.out.println("delete serviceImp1 success");
+		return dao.delete(p);
+	}
+}

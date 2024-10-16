@@ -1,0 +1,23 @@
+-- sql create record
+
+create user 'javaUser'@'localhost' identified by 'mysql';
+
+grant all privileges on javaDB.* to 'javaUser'@'localhost' with grant option;
+flush privileges;
+-- 위 create, grant 는 jdbc 패키지에서 처리함.
+
+create table student (
+num int auto_increment,
+studnum varchar(10) not null,
+studname varchar(10) not null,
+admitflag int default 1,
+birthdt varchar(15),
+telnum varchar(15),
+addr varchar(20),
+regdate datetime default now(),
+primary key(num)
+);
+
+-- DB는 수정되거나 추가되면 변경구문을 써놔야함.
+
+-- 2024.10.16 first record.

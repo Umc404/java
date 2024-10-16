@@ -1,0 +1,44 @@
+package jdbc_student;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import jdbc.DatabaseConnection;
+
+public class StudentDAOImp implements DAO {
+	
+	private Connection conn;
+	private PreparedStatement pst;
+	private String query = "";
+	
+	public StudentDAOImp() {
+		DatabaseConnection dbc = DatabaseConnection.getInstance();
+		conn = dbc.getConnection();
+	}
+	
+	
+	@Override
+	public int insert(Student s) {
+		// String studnum, String studname, String birthdt, String telnum, String addr
+		System.out.println("insert DAOImp 성공");
+		query = "insert into student(studnum, studname, birthdt, telnum, addr) values (?, ?, ?, ?, ?)";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setString(1, s.getStudnum());
+			pst.setString(2, s.getStudname());
+			String date = s.getBirthdt().substring(0,2)				// year
+					+ "-" + s.getBirthdt().substring(2,4)			// month
+					+ "-" +s.getBirthdt().substring(4,6);			// day
+			pst.setString(3, date);
+			pst.setString(4, s.getTelnum());
+			pst.setString(5, s.getAddr());
+			return pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("insert error");
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+}

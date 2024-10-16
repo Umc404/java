@@ -1,0 +1,5 @@
+productController 에서 메서드 생성  Service svc 처리
+Service 에서 처리받은 메서드 interface 추상선언
+Service 상속받은 productServiceImp1 에 추상선언한 메서드 return dao. 처리 Dao dao
+dao 리턴받은 DAO interface 추상 선언
+DAO 선언받은 productDAOImp1 에 추상선언한 메서드 상세로직처리
