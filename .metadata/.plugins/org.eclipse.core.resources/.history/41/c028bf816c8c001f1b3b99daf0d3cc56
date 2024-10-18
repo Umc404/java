@@ -1,0 +1,131 @@
+package fishing;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import jdbc.Product;
+
+public class UserDAOImpl implements UserDAO {
+
+	
+	private Connection conn;
+	
+	private PreparedStatement pst;
+	
+	private String query="";
+	
+	
+	public UserDAOImpl() {
+		DatabaseConnection dbc = DatabaseConnection.getInstance();
+		conn = dbc.getConnection();
+	}
+	
+	
+	@Override
+	public int signUpUser(User u) {
+		System.out.println(" 회원가입 DAOImpl 확인 성공!!");
+		
+		query = "insert into userlist (user_id, passwd, nickname) values (?, ?, ?)";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			
+			pst.setString(1, u.getUser_id());
+			pst.setString(2, u.getPasswd());
+			pst.setString(3, u.getNickname());
+			
+			return pst.executeUpdate();
+			
+		} catch (SQLException e) {
+			System.out.println(" 회원가입 DAOImpl 확인 실패... ");
+			e.printStackTrace();
+		}
+	
+		return 0;
+	}
+
+
+	@Override
+	public User loginUser(String id, String pw) {
+		System.out.println(" 로그인 DAOImpl 확인 성공 ");
+		
+		query = "select * from userlist where user_id = ? AND passwd = ?";
+		
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setString(1, id);
+			pst.setString(2, pw);
+			
+			ResultSet rs = pst.executeQuery();
+			
+			if(rs.next()) {
+				User u = new User();
+				u.setNum(rs.getInt("num")); //
+                u.setUser_id(rs.getString("user_id"));
+                u.setPasswd(rs.getString("passwd"));
+                u.setNickname(rs.getString("nickname"));
+                u.setFishrod(rs.getString("fishrod"));
+                u.setMoney(rs.getInt("money"));
+                u.setBait(rs.getInt("bait"));              
+                return u;
+			}
+		} catch (SQLException e) {
+			System.out.println("로그인 다오임플 실패");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public List<Inventory> userInven(int userNum) {
+		System.out.println("인벤토리 데이터 DAOImpl 확인 성공 ");
+		query = "select i.inven_id, i.num, i.fish_no, f.fish_name, i.fish_size from inventory as i "
+				+ "inner join fish as f "
+				+ "on i.fish_no = f.fish_no "
+				+ "where i.num = ?";
+		int num = userNum;
+		List<Inventory> list = new ArrayList<>();
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, num);
+			
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				list.add(new Inventory(rs.getInt("inven_id"),
+									   rs.getString("fish_name"),
+									   rs.getInt("fish_size")));
+			}
+			return list;
+		} catch (SQLException e) {
+			System.out.println("list error");
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+
+	@Override
+	public int userBait(User u) {
+		System.out.println("떡밥개수"+u.getBaitCnt()+"떡밥값"+u.getBaitPrice()+"누구?"+ u.getNum());
+		query = "update userlist set bait = bait + ?, money = money - ? "
+				+ "where num = ?";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, u.getBaitCnt());
+			pst.setInt(2, u.getBaitPrice());
+			pst.setInt(3, u.getNum());
+			return pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("bait update error");
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+
+}

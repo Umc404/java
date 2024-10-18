@@ -1,0 +1,29 @@
+package fishing;
+
+import java.util.List;
+
+public interface UserService {
+	
+	int signUp(User u);
+
+	User login(String id, String pw);
+	
+	
+	// 떡밥 구매
+	int updBait(User u);
+	
+	// 낚시대 구매
+	int updRod(User u);
+	
+	// 물고기 선택판매
+	int plusOneMoney(User u);
+
+	// 물고기 모두판매
+	int plusAllMoney(User u);
+
+	User userInfo(int num);
+
+	boolean compMoney(User u1);
+	
+	
+}

@@ -1,0 +1,19 @@
+package fishing;
+
+import java.util.List;
+
+public interface UserDAO {
+
+
+	int signUpUser(User u);
+
+	User loginUser(String id, String pw);
+
+	List<Inventory> userInven(int userNum);
+
+	int userBait(User u);
+
+	int userRod(User u);
+
+	int userMoney(User u);
+}

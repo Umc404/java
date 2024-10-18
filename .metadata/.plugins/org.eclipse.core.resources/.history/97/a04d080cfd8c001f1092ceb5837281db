@@ -1,0 +1,25 @@
+package fishing;
+
+
+public interface UserDAO {
+
+	int signUpUser(User u);
+
+	User loginUser(String id, String pw);
+
+	// 떡밥
+	int userBait(User u);
+	
+	// 낚시대
+	int userRod(User u);
+
+	// 물고기 선택판매
+	int userOneMoney(User u);
+
+	// 물고기 모두판매
+	int userAllMoney(User u);
+
+	User userInfo(int num);
+
+	boolean compMoney(User u1);
+}

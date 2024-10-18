@@ -1,0 +1,17 @@
+package fishing;
+
+import java.util.List;
+
+public interface InvenDAO {
+	
+	// 인벤 리스트
+	List<Inventory> userInven(int userNum);
+	
+	// 물고기 선택판매
+
+	int sellOne(Inventory i);
+	
+	// 물고기 모두판매
+
+	int sellAll(Inventory i);
+}

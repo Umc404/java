@@ -1,0 +1,14 @@
+package fishing;
+
+import java.util.List;
+
+public interface InvenService {
+	// 가방 리스트 출력
+		List<Inventory> getInven(int userNum);
+		
+		// 물고기 선택판매
+		int sellOneFish(Inventory i);
+		
+		// 물고기 모두판매
+		int sellAllFish(Inventory i);
+}

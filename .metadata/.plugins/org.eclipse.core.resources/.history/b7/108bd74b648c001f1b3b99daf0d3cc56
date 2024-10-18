@@ -1,0 +1,68 @@
+package fishing;
+
+public class Inventory {
+	private int inven_id;
+	private int num;
+	private int fish_no;
+	private String fish_name;
+	private int fish_size;
+	
+	// 생성자
+	public Inventory() {}
+	
+	// 인벤 불러오기
+	public Inventory(int inven_id, String fish_name, int fish_size) {
+		this.inven_id = inven_id;
+		this.fish_name = fish_name;
+		this.fish_size = fish_size;
+	}
+
+	public String invenList() {
+		return "인벤토리 번호 : " + item_cnt + " 물고기 번호 : " + fish_no +" 물고기 크기 : " + fish_size;
+	}
+	
+	public String getInven_id() {
+		return inven_id;
+	}
+
+	public void setInven_id(String inven_id) {
+		this.inven_id = inven_id;
+	}
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+
+	public int getItem_cnt() {
+		return item_cnt;
+	}
+
+	public void setItem_cnt(int item_cnt) {
+		this.item_cnt = item_cnt;
+	}
+
+	public int getFish_no() {
+		return fish_no;
+	}
+
+	public void setFish_no(int fish_no) {
+		this.fish_no = fish_no;
+	}
+
+	public int getFish_size() {
+		return fish_size;
+	}
+
+	public void setFish_size(int fish_size) {
+		this.fish_size = fish_size;
+	}
+	
+	// inventory insert
+//	public Inventory
+	
+	
+}

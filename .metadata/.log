@@ -5827,3 +5827,885 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2024-10-17 11:02:27.713 -----------------------------------------------
+eclipse.buildId=4.33.0.20240905-0613
+java.version=23
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-17 11:02:31.051
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-17 11:02:34.130
+!MESSAGE Logback config file: D:\umc\java_workspace\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-10-17 11:02:40.442
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\EZENIC-139'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+!SESSION 2024-10-18 09:26:52.314 -----------------------------------------------
+eclipse.buildId=4.33.0.20240905-0613
+java.version=23
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-18 09:26:56.175
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-18 09:26:59.447
+!MESSAGE Logback config file: D:\umc\java_workspace\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-10-18 09:27:06.166
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\EZENIC-139'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-10-18 09:34:50.047
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package fishing;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class MainController {
+	/*
+	 * 
+	 * 1. 낚시하기
+	 * 
+	 * 2. 가방
+	 * 
+	 * 3. 상점
+	 * 
+	 * 4. 종료
+	 * 
+	 * 
+	 * 
+	 */
+	private Scanner scan;
+	private UserService svc;
+	private boolean flag;
+	private int usernum;
+	
+	public MainController(int num) {
+		usernum = num;
+		scan = new Scanner(System.in);
+		svc = new UserServiceImpl();
+		flag = true;
+		printMain();
+	}
+	private void userInfo(0 )
+	private void printMain() {
+		while(flag) {
+			System.out.println("메뉴 선택하세요.");
+			System.out.println("1. 낚시 2. 장소변경 3. 가방  4. 상점 5. 종료");
+			System.out.println("userNum : " + usernum);
+			int menu = scan.nextInt();
+			
+			switch(menu) {
+			case 1: test1(); break;					//
+			case 2: test2(); break;					// 
+			case 3: inventory(usernum); break;					// 가방
+			case 4: store(usernum); break;					// 상점
+			case 5: 
+				System.out.println("종료");
+				flag = false; break;
+			default: System.out.println("어허 어디가세요.");
+			}
+			
+		}
+	}
+
+	private void test1() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	private void inventory(int num) {
+//		
+		int userNum = num;
+//		System.out.println("유저 번호 : "+userNum);
+		List<Inventory> list = svc.getInven(userNum);
+		
+		for(Inventory i : list) {
+			System.out.println(i.invenList());
+		}
+		
+	}
+
+	private void store(int num) {
+		System.out.println("상점에 오신걸 환영합니다.");
+		System.out.println("1. 떡밥 구매 | 2. 낚싯대 구매 | 3. 물고기 판매");
+		int sel = scan.nextInt();
+		
+		switch(sel) {
+		case 1:					// 떡밥 구매 
+			buyBait(num);
+			
+			break;
+		case 2: 				// 낚싯대 구매
+			buyFishrod(num);
+			break;
+		case 3: 				// 물고기 판매
+			sellFish(num);
+			break;
+		default:
+			System.out.println("어허 손버릇.");
+		}
+		System.out.println();
+	}
+	
+
+
+	private void buyBait(int num) {
+		System.out.println("구매할 떡밥 개수를 입력하세요. (떡밥 비용 : 500원)");
+		
+		int baitCnt = scan.nextInt();//	떡밥 구매
+		int baitPrice = baitCnt * 500;				// 총 떡밥구매량
+		
+		User u = new User(num, baitCnt, baitPrice);		// num : 회원번호
+		int isOk = svc.updBait(u);
+		
+		System.out.println("떡밥 구매 " + (isOk > 0? "완료":"실패"));
+	}
+
+	private void buyFishrod(int num) {
+		System.out.println("구매할 낚시대를 선택하세요.");
+		System.out.println("1. 반 낚시대");
+		System.out.println("2. 스탠다드 낚시대");
+		System.out.println("3. 프리미엄 낚시대");
+		System.out.println("4. 엘리트 낚시대");
+		int rodnum = scan.nextInt();
+		
+		String fishrod = "";
+		switch(rodnum) {
+		case 1: fishrod = "normal"; break;
+		case 2: fishrod = "standard"; break;
+		case 3: fishrod = "premium"; break;
+		case 4: fishrod = "elite"; break;
+		}
+		// 이거 낚시대 금액 잡아서 처리
+		User u = new User(num, fishrod);
+		int isOk = svc.updRod(u);
+		
+		System.out.println("낚시대 구매 " + (isOk > 0? "완료":"실패"));
+	}
+	
+	private void sellFish(int num) {
+		System.out.println("하나만 파시겠습니까 모두 파시겠습니까? : (1 : 하나 / 2 : 모두)");
+		int oneOrAll = scan.nextInt();
+		
+		switch(oneOrAll) {
+		case 1: sellOneFish(num); break;
+		case 2: sellAllFish(num); break;
+		default:
+			System.out.println("팔기 싫어?");
+		}
+		
+	}
+
+	private void sellOneFish(int num) {
+		inventory(num);
+		System.out.println("판매하려는 인벤토리 번호를 입력하세요.");
+		int sellNum = scan.nextInt();
+		
+		User u = new User(num, sellNum);
+		Inventory i = new Inventory(num, sellNum);
+		
+		int isOk1 = svc.plusOneMoney(u);
+		int isOk2 = svc.sellOneFish(i);
+		
+		System.out.println("금액 입금 " + (isOk1 > 0? "완료":"실패"));
+		System.out.println("물고기 판매 " + (isOk2 > 0? "완료":"실패"));
+	}
+	private void sellAllFish(int num) {
+		User u = new User(num);
+		Inventory i = new Inventory(num);
+		
+		int isOk1 = svc.plusAllMoney(u);
+		int isOk2 = svc.sellAllFish(i);
+		
+		System.out.println("금액 입금 " + (isOk1 > 0? "완료":"실패"));
+		System.out.println("물고기 판매 " + (isOk2 > 0? "완료":"실패"));
+	}
+
+	private void test2() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3477)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:800)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3567)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1595)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:646)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:194)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:245)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:585)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1129)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:166)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:92)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:739)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:804)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1303)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2024-10-18 09:34:50.049
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3477)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:800)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3567)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1595)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:646)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:194)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:245)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:585)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1129)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:166)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:92)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:739)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:804)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1303)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2024-10-18 09:34:50.054
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3477)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:800)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3567)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1595)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:646)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:194)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:245)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:585)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1129)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:166)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:92)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:739)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:804)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1303)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-10-18 09:34:50.083
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package fishing;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class MainController {
+	/*
+	 * 
+	 * 1. 낚시하기
+	 * 
+	 * 2. 가방
+	 * 
+	 * 3. 상점
+	 * 
+	 * 4. 종료
+	 * 
+	 * 
+	 * 
+	 */
+	private Scanner scan;
+	private UserService svc;
+	private boolean flag;
+	private int usernum;
+	
+	public MainController(int num) {
+		usernum = num;
+		scan = new Scanner(System.in);
+		svc = new UserServiceImpl();
+		flag = true;
+		printMain();
+	}
+	private void userInfo(0)
+	private void printMain() {
+		while(flag) {
+			System.out.println("메뉴 선택하세요.");
+			System.out.println("1. 낚시 2. 장소변경 3. 가방  4. 상점 5. 종료");
+			System.out.println("userNum : " + usernum);
+			int menu = scan.nextInt();
+			
+			switch(menu) {
+			case 1: test1(); break;					//
+			case 2: test2(); break;					// 
+			case 3: inventory(usernum); break;					// 가방
+			case 4: store(usernum); break;					// 상점
+			case 5: 
+				System.out.println("종료");
+				flag = false; break;
+			default: System.out.println("어허 어디가세요.");
+			}
+			
+		}
+	}
+
+	private void test1() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	private void inventory(int num) {
+//		
+		int userNum = num;
+//		System.out.println("유저 번호 : "+userNum);
+		List<Inventory> list = svc.getInven(userNum);
+		
+		for(Inventory i : list) {
+			System.out.println(i.invenList());
+		}
+		
+	}
+
+	private void store(int num) {
+		System.out.println("상점에 오신걸 환영합니다.");
+		System.out.println("1. 떡밥 구매 | 2. 낚싯대 구매 | 3. 물고기 판매");
+		int sel = scan.nextInt();
+		
+		switch(sel) {
+		case 1:					// 떡밥 구매 
+			buyBait(num);
+			
+			break;
+		case 2: 				// 낚싯대 구매
+			buyFishrod(num);
+			break;
+		case 3: 				// 물고기 판매
+			sellFish(num);
+			break;
+		default:
+			System.out.println("어허 손버릇.");
+		}
+		System.out.println();
+	}
+	
+
+
+	private void buyBait(int num) {
+		System.out.println("구매할 떡밥 개수를 입력하세요. (떡밥 비용 : 500원)");
+		
+		int baitCnt = scan.nextInt();//	떡밥 구매
+		int baitPrice = baitCnt * 500;				// 총 떡밥구매량
+		
+		User u = new User(num, baitCnt, baitPrice);		// num : 회원번호
+		int isOk = svc.updBait(u);
+		
+		System.out.println("떡밥 구매 " + (isOk > 0? "완료":"실패"));
+	}
+
+	private void buyFishrod(int num) {
+		System.out.println("구매할 낚시대를 선택하세요.");
+		System.out.println("1. 반 낚시대");
+		System.out.println("2. 스탠다드 낚시대");
+		System.out.println("3. 프리미엄 낚시대");
+		System.out.println("4. 엘리트 낚시대");
+		int rodnum = scan.nextInt();
+		
+		String fishrod = "";
+		switch(rodnum) {
+		case 1: fishrod = "normal"; break;
+		case 2: fishrod = "standard"; break;
+		case 3: fishrod = "premium"; break;
+		case 4: fishrod = "elite"; break;
+		}
+		// 이거 낚시대 금액 잡아서 처리
+		User u = new User(num, fishrod);
+		int isOk = svc.updRod(u);
+		
+		System.out.println("낚시대 구매 " + (isOk > 0? "완료":"실패"));
+	}
+	
+	private void sellFish(int num) {
+		System.out.println("하나만 파시겠습니까 모두 파시겠습니까? : (1 : 하나 / 2 : 모두)");
+		int oneOrAll = scan.nextInt();
+		
+		switch(oneOrAll) {
+		case 1: sellOneFish(num); break;
+		case 2: sellAllFish(num); break;
+		default:
+			System.out.println("팔기 싫어?");
+		}
+		
+	}
+
+	private void sellOneFish(int num) {
+		inventory(num);
+		System.out.println("판매하려는 인벤토리 번호를 입력하세요.");
+		int sellNum = scan.nextInt();
+		
+		User u = new User(num, sellNum);
+		Inventory i = new Inventory(num, sellNum);
+		
+		int isOk1 = svc.plusOneMoney(u);
+		int isOk2 = svc.sellOneFish(i);
+		
+		System.out.println("금액 입금 " + (isOk1 > 0? "완료":"실패"));
+		System.out.println("물고기 판매 " + (isOk2 > 0? "완료":"실패"));
+	}
+	private void sellAllFish(int num) {
+		User u = new User(num);
+		Inventory i = new Inventory(num);
+		
+		int isOk1 = svc.plusAllMoney(u);
+		int isOk2 = svc.sellAllFish(i);
+		
+		System.out.println("금액 입금 " + (isOk1 > 0? "완료":"실패"));
+		System.out.println("물고기 판매 " + (isOk2 > 0? "완료":"실패"));
+	}
+
+	private void test2() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3477)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:800)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3567)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1595)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:646)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:194)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:245)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:585)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1129)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:166)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:92)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:739)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:804)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1303)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2024-10-18 09:34:50.084
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3477)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:800)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3567)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1595)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:646)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:194)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:245)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:585)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1129)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:166)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:92)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:739)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:804)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1303)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2024-10-18 09:34:50.085
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3477)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:800)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3567)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1595)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:646)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:194)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:245)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:585)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1129)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:166)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:92)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:739)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:804)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1303)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-10-18 09:34:50.546
+!MESSAGE Exception occurred during compilation unit conversion:
+----------------------------------- SOURCE BEGIN -------------------------------------
+package fishing;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class MainController {
+	/*
+	 * 
+	 * 1. 낚시하기
+	 * 
+	 * 2. 가방
+	 * 
+	 * 3. 상점
+	 * 
+	 * 4. 종료
+	 * 
+	 * 
+	 * 
+	 */
+	private Scanner scan;
+	private UserService svc;
+	private boolean flag;
+	private int usernum;
+	
+	public MainController(int num) {
+		usernum = num;
+		scan = new Scanner(System.in);
+		svc = new UserServiceImpl();
+		flag = true;
+		printMain();
+	}
+	private void userInfo(0) {
+	private void printMain() {
+		while(flag) {
+			System.out.println("메뉴 선택하세요.");
+			System.out.println("1. 낚시 2. 장소변경 3. 가방  4. 상점 5. 종료");
+			System.out.println("userNum : " + usernum);
+			int menu = scan.nextInt();
+			
+			switch(menu) {
+			case 1: test1(); break;					//
+			case 2: test2(); break;					// 
+			case 3: inventory(usernum); break;					// 가방
+			case 4: store(usernum); break;					// 상점
+			case 5: 
+				System.out.println("종료");
+				flag = false; break;
+			default: System.out.println("어허 어디가세요.");
+			}
+			
+		}
+	}
+
+	private void test1() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	private void inventory(int num) {
+//		
+		int userNum = num;
+//		System.out.println("유저 번호 : "+userNum);
+		List<Inventory> list = svc.getInven(userNum);
+		
+		for(Inventory i : list) {
+			System.out.println(i.invenList());
+		}
+		
+	}
+
+	private void store(int num) {
+		System.out.println("상점에 오신걸 환영합니다.");
+		System.out.println("1. 떡밥 구매 | 2. 낚싯대 구매 | 3. 물고기 판매");
+		int sel = scan.nextInt();
+		
+		switch(sel) {
+		case 1:					// 떡밥 구매 
+			buyBait(num);
+			
+			break;
+		case 2: 				// 낚싯대 구매
+			buyFishrod(num);
+			break;
+		case 3: 				// 물고기 판매
+			sellFish(num);
+			break;
+		default:
+			System.out.println("어허 손버릇.");
+		}
+		System.out.println();
+	}
+	
+
+
+	private void buyBait(int num) {
+		System.out.println("구매할 떡밥 개수를 입력하세요. (떡밥 비용 : 500원)");
+		
+		int baitCnt = scan.nextInt();//	떡밥 구매
+		int baitPrice = baitCnt * 500;				// 총 떡밥구매량
+		
+		User u = new User(num, baitCnt, baitPrice);		// num : 회원번호
+		int isOk = svc.updBait(u);
+		
+		System.out.println("떡밥 구매 " + (isOk > 0? "완료":"실패"));
+	}
+
+	private void buyFishrod(int num) {
+		System.out.println("구매할 낚시대를 선택하세요.");
+		System.out.println("1. 반 낚시대");
+		System.out.println("2. 스탠다드 낚시대");
+		System.out.println("3. 프리미엄 낚시대");
+		System.out.println("4. 엘리트 낚시대");
+		int rodnum = scan.nextInt();
+		
+		String fishrod = "";
+		switch(rodnum) {
+		case 1: fishrod = "normal"; break;
+		case 2: fishrod = "standard"; break;
+		case 3: fishrod = "premium"; break;
+		case 4: fishrod = "elite"; break;
+		}
+		// 이거 낚시대 금액 잡아서 처리
+		User u = new User(num, fishrod);
+		int isOk = svc.updRod(u);
+		
+		System.out.println("낚시대 구매 " + (isOk > 0? "완료":"실패"));
+	}
+	
+	private void sellFish(int num) {
+		System.out.println("하나만 파시겠습니까 모두 파시겠습니까? : (1 : 하나 / 2 : 모두)");
+		int oneOrAll = scan.nextInt();
+		
+		switch(oneOrAll) {
+		case 1: sellOneFish(num); break;
+		case 2: sellAllFish(num); break;
+		default:
+			System.out.println("팔기 싫어?");
+		}
+		
+	}
+
+	private void sellOneFish(int num) {
+		inventory(num);
+		System.out.println("판매하려는 인벤토리 번호를 입력하세요.");
+		int sellNum = scan.nextInt();
+		
+		User u = new User(num, sellNum);
+		Inventory i = new Inventory(num, sellNum);
+		
+		int isOk1 = svc.plusOneMoney(u);
+		int isOk2 = svc.sellOneFish(i);
+		
+		System.out.println("금액 입금 " + (isOk1 > 0? "완료":"실패"));
+		System.out.println("물고기 판매 " + (isOk2 > 0? "완료":"실패"));
+	}
+	private void sellAllFish(int num) {
+		User u = new User(num);
+		Inventory i = new Inventory(num);
+		
+		int isOk1 = svc.plusAllMoney(u);
+		int isOk2 = svc.sellAllFish(i);
+		
+		System.out.println("금액 입금 " + (isOk1 > 0? "완료":"실패"));
+		System.out.println("물고기 판매 " + (isOk2 > 0? "완료":"실패"));
+	}
+
+	private void test2() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	
+}
+
+----------------------------------- SOURCE END -------------------------------------
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3477)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:800)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3567)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1595)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:646)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:194)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:245)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:585)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1129)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:166)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:92)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:739)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:804)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1303)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.ui 4 2 2024-10-18 09:34:50.546
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.jdt.ui".
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3477)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:800)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3567)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1595)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:646)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:194)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:245)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:585)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1129)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:166)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:92)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:739)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:804)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1303)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.ui 4 0 2024-10-18 09:34:50.548
+!MESSAGE Error in JDT Core during reconcile
+!STACK 0
+java.lang.IllegalArgumentException
+	at org.eclipse.jdt.core.dom.ASTNode.setSourceRange(ASTNode.java:3477)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:800)
+	at org.eclipse.jdt.core.dom.ASTConverter.buildBodyDeclarations(ASTConverter.java:208)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:3567)
+	at org.eclipse.jdt.core.dom.ASTConverter.convert(ASTConverter.java:1595)
+	at org.eclipse.jdt.core.dom.AST.convertCompilationUnit(AST.java:646)
+	at org.eclipse.jdt.internal.core.CompilationUnit.buildStructure(CompilationUnit.java:194)
+	at org.eclipse.jdt.internal.core.Openable.generateInfos(Openable.java:245)
+	at org.eclipse.jdt.internal.core.JavaElement.openWhenClosed(JavaElement.java:585)
+	at org.eclipse.jdt.internal.core.CompilationUnit.makeConsistent(CompilationUnit.java:1129)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.makeConsistent(ReconcileWorkingCopyOperation.java:166)
+	at org.eclipse.jdt.internal.core.ReconcileWorkingCopyOperation.executeOperation(ReconcileWorkingCopyOperation.java:92)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.run(JavaModelOperation.java:739)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:804)
+	at org.eclipse.jdt.internal.core.CompilationUnit.reconcile(CompilationUnit.java:1303)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:132)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy$1.run(JavaReconcilingStrategy.java:94)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:91)
+	at org.eclipse.jdt.internal.ui.text.java.JavaReconcilingStrategy.reconcile(JavaReconcilingStrategy.java:158)
+	at org.eclipse.jdt.internal.ui.text.CompositeReconcilingStrategy.reconcile(CompositeReconcilingStrategy.java:94)
+	at org.eclipse.jdt.internal.ui.text.JavaCompositeReconcilingStrategy.reconcile(JavaCompositeReconcilingStrategy.java:107)
+	at org.eclipse.jface.text.reconciler.MonoReconciler.process(MonoReconciler.java:78)
+	at org.eclipse.jface.text.reconciler.AbstractReconciler$BackgroundThread.run(AbstractReconciler.java:207)
+
+!ENTRY org.eclipse.jdt.core 4 4 2024-10-18 09:44:04.734
+!MESSAGE Could not retrieve superclass
+!STACK 0
+org.eclipse.jdt.internal.compiler.problem.AbortCompilation: Pb(347) The type com.google.protobuf.GeneratedMessageV3 cannot be resolved. It is indirectly referenced from required type com.mysql.cj.x.protobuf.MysqlxSession.Reset
+	at org.eclipse.jdt.internal.compiler.problem.ProblemHandler.handle(ProblemHandler.java:159)
+	at org.eclipse.jdt.internal.compiler.problem.ProblemHandler.handle(ProblemHandler.java:226)
+	at org.eclipse.jdt.internal.compiler.problem.ProblemReporter.handle(ProblemReporter.java:2723)
+	at org.eclipse.jdt.internal.compiler.problem.ProblemReporter.isClassPathCorrect(ProblemReporter.java:5223)
+	at org.eclipse.jdt.internal.compiler.lookup.UnresolvedReferenceBinding.resolve(UnresolvedReferenceBinding.java:125)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.resolveType(BinaryTypeBinding.java:251)
+	at org.eclipse.jdt.internal.compiler.lookup.BinaryTypeBinding.superclass(BinaryTypeBinding.java:2469)
+	at org.eclipse.jdt.core.dom.TypeBinding.getSuperclass(TypeBinding.java:858)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsBaseSubProcessor.isInherited(UnresolvedElementsBaseSubProcessor.java:1028)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsBaseSubProcessor.addSimilarTypeProposals(UnresolvedElementsBaseSubProcessor.java:996)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsBaseSubProcessor.collectTypeProposals(UnresolvedElementsBaseSubProcessor.java:755)
+	at org.eclipse.jdt.internal.ui.text.correction.UnresolvedElementsSubProcessor.getTypeProposals(UnresolvedElementsSubProcessor.java:144)
+	at org.eclipse.jdt.internal.ui.text.correction.QuickFixProcessor.process(QuickFixProcessor.java:455)
+	at org.eclipse.jdt.internal.ui.text.correction.QuickFixProcessor.getCorrections(QuickFixProcessor.java:378)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor$SafeCorrectionCollector.safeRun(JavaCorrectionProcessor.java:381)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor$SafeCorrectionProcessorAccess.run(JavaCorrectionProcessor.java:341)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor$SafeCorrectionProcessorAccess.process(JavaCorrectionProcessor.java:336)
+	at org.eclipse.jdt.internal.ui.text.correction.JavaCorrectionProcessor.collectCorrections(JavaCorrectionProcessor.java:465)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover$ProblemInfo.getJavaAnnotationFixes(ProblemHover.java:115)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover$ProblemInfo.computeCompletionProposals(ProblemHover.java:89)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover$ProblemInfo.<init>(ProblemHover.java:74)
+	at org.eclipse.jdt.internal.ui.text.java.hover.ProblemHover.createAnnotationInfo(ProblemHover.java:178)
+	at org.eclipse.jdt.internal.ui.text.java.hover.AbstractAnnotationHover.getHoverInfo2(AbstractAnnotationHover.java:755)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:163)
+	at org.eclipse.jdt.internal.ui.text.java.hover.BestMatchHover.getHoverInfo2(BestMatchHover.java:130)
+	at org.eclipse.jdt.internal.ui.text.java.hover.JavaEditorTextHoverProxy.getHoverInfo2(JavaEditorTextHoverProxy.java:89)
+	at org.eclipse.jface.text.TextViewerHoverManager$1.run(TextViewerHoverManager.java:155)
+!SESSION 2024-10-18 11:35:14.161 -----------------------------------------------
+eclipse.buildId=4.33.0.20240905-0613
+java.version=23
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ko_KR
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-18 11:35:17.040
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY ch.qos.logback.classic 1 0 2024-10-18 11:35:19.203
+!MESSAGE Logback config file: D:\umc\java_workspace\.metadata\.plugins\org.eclipse.m2e.logback\logback.2.6.1.20240411-1122.xml
+
+!ENTRY org.eclipse.egit.ui 2 0 2024-10-18 11:35:24.694
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\EZENIC-139'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.

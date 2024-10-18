@@ -2,6 +2,8 @@ package jdbc_student;
 
 import java.util.List;
 
+import fishing.Inventory;
+
 public interface Service {
 
 	int insert(Student s);
@@ -17,5 +19,4 @@ public interface Service {
 	int admitflag(Student s);
 
 	Student getAdmit(int admit);
-
 }

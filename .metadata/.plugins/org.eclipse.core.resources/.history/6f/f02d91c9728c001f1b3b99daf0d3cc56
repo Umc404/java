@@ -1,0 +1,55 @@
+package fishing;
+
+import java.util.List;
+
+public class UserServiceImpl implements UserService {
+
+	private UserDAO dao;
+	
+	public UserServiceImpl() {
+		dao = new UserDAOImpl();
+	}
+
+	@Override
+	public int signUp(User u) {
+		System.out.println(" 회원가입 서비스 에러 확인 성공 ");
+		
+		return dao.signUpUser(u);
+	}
+
+	@Override
+	public User login(String id, String pw) {
+		System.out.println("로그인 서비스 에러 확인 성공");
+		return dao.loginUser(id,pw);
+	}
+
+	public List<Inventory> getInven(int userNum) {
+		System.out.println("인벤리스트 서비스 에러 확인 성공");
+		return dao.userInven(userNum);
+	}
+
+	@Override
+	public int updBait(User u) {
+		System.out.println("떡밥 구매 에러 확인 성공");
+		return dao.userBait(u);
+	}
+
+	@Override
+	public int updRod(User u) {
+		System.out.println("낚시대 구매 에러확인 성공");
+		return dao.userRod(u);
+	}
+
+	@Override
+	public int plusMoney(User u) {
+		System.out.println("금액 입금 에러확인 성공");
+		return dao.userMoney(i);
+	}
+
+	@Override
+	public int sellFish(Inventory i) {
+		System.out.println("물고기 판매 에러확인 성공");
+		return dao.sellOne(i);
+	}
+
+}

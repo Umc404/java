@@ -1,0 +1,112 @@
+package fishing;
+
+import java.util.List;
+import java.util.Scanner;
+
+import jdbc_student.Service;
+import jdbc_student.StudentServiceImp;
+
+public class MainController {
+	/*
+	 * 
+	 * 1. 낚시하기
+	 * 
+	 * 2. 가방
+	 * 
+	 * 3. 상점
+	 * 
+	 * 4. 종료
+	 * 
+	 * 
+	 * 
+	 */
+	private Scanner scan;
+	private UserService svc;
+	private boolean flag;
+	private int usernum;
+	
+	public MainController(int num) {
+		usernum = num;
+		scan = new Scanner(System.in);
+		svc = new UserServiceImpl();
+		flag = true;
+		printMain();
+	}
+	
+	private void printMain() {
+		while(flag) {
+			System.out.println("메뉴 선택하세요.");
+			System.out.println("1. 낚시 2. 장소변경 3. 가방  4. 상점 5. 종료");
+			System.out.println("userNum : " + usernum);
+			int menu = scan.nextInt();
+			
+			switch(menu) {
+			case 1: test1(); break;					//
+			case 2: test2(); break;					// 
+			case 3: inventory(usernum); break;					// 가방
+			case 4: store(usernum); break;					// 상점
+			case 5: 
+				System.out.println("종료");
+				flag = false; break;
+			default: System.out.println("어허 어디가세요.");
+			}
+			
+		}
+	}
+
+	private void test1() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	private void inventory(int num) {
+//		
+		int userNum = num;
+//		System.out.println("유저 번호 : "+userNum);
+		List<Inventory> list = svc.getInven(userNum);
+		
+		for(Inventory i : list) {
+			System.out.println(i.invenList());
+		}
+		
+	}
+
+	private void store(int num) {
+		System.out.println("상점에 오신걸 환영합니다.");
+		System.out.println("1. 떡밥 구매 | 2. 낚싯대 구매 | 3. 물고기 판매");
+		int sel = scan.nextInt();
+		
+		switch(sel) {
+		case 1:					// 떡밥 구매 
+			buyBait();
+			
+			break;
+		case 2: 				// 낚싯대 구매
+			
+			break;
+		case 3: 				// 물고기 판매
+			
+			break;
+		default:
+			System.out.println("어허 손버릇.");
+		}
+		System.out.println();
+	}
+	
+	private void buyBait() {
+		System.out.println("구매할 떡밥 개수를 입력하세요. (떡밥 비용 : 500원)");
+		int baitCnt = scan.nextInt();//	떡밥 구매
+		int baitPrice = baitCnt * 500;				// 총 떡밥구매량
+		
+		User u = new User(baitCnt, baitPrice);
+		
+		System.out.println("떡밥 구매 완료. 현재 떡밥 개수 : " );
+	}
+
+	private void test2() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	
+}

@@ -20,7 +20,7 @@ public class StudentController {
 	private void printMenu() {
 		while(flag) {
 			System.out.println("=== 학생관리 프로그램 ===");
-			System.out.println("1. 학생 등록\t|\t2. 학생 명단\t|\t3. 학생 검색(상세정보)");
+			System.out.println("1. 학생 등록\t|\t2. 학생 명단\t|\t\t3. 학생 검색(상세정보)");
 			System.out.println("4. 학생정보 수정\t|\t5. 학생 삭제\t|\t6. 재학구분 변경");
 			System.out.println("7. 종료");
 			System.out.println("menu >");

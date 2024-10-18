@@ -1,0 +1,14 @@
+package fishing;
+
+public class Inventory {
+	private String inven_id;
+	private int num;
+	private int item_cnt;
+	private int fish_no;
+	private int fish_size;
+	
+	public Inventory() {}
+	
+	// inventory insert
+//	public Inventory
+}

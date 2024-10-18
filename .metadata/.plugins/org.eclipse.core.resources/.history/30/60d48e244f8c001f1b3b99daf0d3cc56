@@ -1,0 +1,6 @@
+package fishing;
+
+public class Inventory {
+	private String inven_id;
+	
+}

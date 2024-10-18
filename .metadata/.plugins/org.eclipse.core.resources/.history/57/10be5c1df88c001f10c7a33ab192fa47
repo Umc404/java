@@ -1,0 +1,71 @@
+package fishing;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class InvenDAOImpl implements InvenDAO{
+
+	@Override
+	public List<Inventory> userInven(int userNum) {
+		System.out.println("인벤토리 데이터 DAOImpl 확인 성공 ");
+		query =   "select i.inven_id, i.num, i.fish_no, f.fish_name, i.fish_size from inventory as i "
+				+ "inner join fish as f "
+				+ "on i.fish_no = f.fish_no "
+				+ "where i.num = ?";
+		int num = userNum;
+		List<Inventory> list = new ArrayList<>();
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, num);
+			
+			ResultSet rs = pst.executeQuery();
+			while(rs.next()) {
+				list.add(new Inventory(rs.getInt("inven_id"),
+									   rs.getString("fish_name"),
+									   rs.getInt("fish_size")));
+			}
+			return list;
+		} catch (SQLException e) {
+			System.out.println("list error");
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public int sellOne(Inventory i) {							// delete from inventory where
+		System.out.println(i.getNum()+ " " + i.getSellno());
+		query =   "delete from inventory "
+				+ "where num = ? and inven_id = ?";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, i.getNum());
+			pst.setInt(2, i.getSellno());
+			return pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("inven sell fish error");
+			e.printStackTrace();
+		}
+		
+		
+		return 0;
+	}
+	@Override
+	public int sellAll(Inventory i) {
+		System.out.println(i.getNum());
+		query =   "delete from inventory "
+				+ "where num = ?";
+		try {
+			pst = conn.prepareStatement(query);
+			pst.setInt(1, i.getNum());
+			return pst.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("inven sell fish error");
+			e.printStackTrace();
+		}
+		return 0;
+	}
+}

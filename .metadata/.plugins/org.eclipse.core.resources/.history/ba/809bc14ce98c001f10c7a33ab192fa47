@@ -1,0 +1,27 @@
+package fishing;
+
+import java.util.List;
+
+public interface UserDAO {
+
+
+	int signUpUser(User u);
+
+	User loginUser(String id, String pw);
+
+	List<Inventory> userInven(int userNum);
+
+	// 떡밥
+	int userBait(User u);
+	
+	// 낚시대
+	int userRod(User u);
+
+	// 물고기 선택판매
+	int userOneMoney(User u);
+	int sellOne(Inventory i);
+
+	// 물고기 모두판매
+	int userAllMoney(User u);
+	int sellAll(Inventory i);
+}

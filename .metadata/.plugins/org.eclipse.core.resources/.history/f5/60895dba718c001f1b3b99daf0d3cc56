@@ -1,0 +1,18 @@
+package fishing;
+
+import java.util.List;
+
+public interface UserService {
+	
+	int signUp(User u);
+
+	User login(String id, String pw);
+
+	List<Inventory> getInven(int userNum);
+
+	int updBait(User u);
+
+	int updRod(User u);
+	
+	
+}

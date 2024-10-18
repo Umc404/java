@@ -1,0 +1,185 @@
+package fishing;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class MainController {
+	
+	private Scanner scan;
+	private UserService svc;
+	private boolean flag;
+	private int usernum;
+	
+	public MainController(int num) {
+		usernum = num;
+		scan = new Scanner(System.in);
+		svc = new UserServiceImpl();
+		flag = true;
+		userInfo(num);
+		printMain(num);
+	}
+	private void userInfo(int num) {
+		User u = svc.userInfo(num);
+		System.out.println(u);
+	}
+	private void printMain(int num) {
+		while(flag) {
+			System.out.println("메뉴 선택하세요.");
+			System.out.println("1. 낚시 2. 장소변경 3. 가방  4. 상점 5. 종료");
+			System.out.println("userNum : " + usernum);
+			int menu = scan.nextInt();
+			
+			switch(menu) {
+			case 1: test1(); break;					//
+			case 2: test2(); break;					// 
+			case 3: inventory(usernum); break;					// 가방
+			case 4: store(usernum); break;					// 상점
+			case 5: 
+				System.out.println("종료");
+				flag = false; break;
+			default: System.out.println("어허 어디가세요.");
+			}
+			
+		}
+	}
+
+	private void test1() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	private void inventory(int num) {
+//		
+		int userNum = num;
+		System.out.println("유저 번호 : "+userNum);
+		List<Inventory> list = svc.getInven(userNum);
+		
+		for(Inventory i : list) {
+			System.out.println(i.invenList());
+		}
+		
+	}
+
+	private void store(int num) {
+		System.out.println("상점에 오신걸 환영합니다.");
+		System.out.println("1. 떡밥 구매 | 2. 낚싯대 구매 | 3. 물고기 판매");
+		int sel = scan.nextInt();
+		
+		switch(sel) {
+		case 1:					// 떡밥 구매 
+			buyBait(num);
+			
+			break;
+		case 2: 				// 낚싯대 구매
+			buyFishrod(num);
+			break;
+		case 3: 				// 물고기 판매
+			sellFish(num);
+			break;
+		default:
+			System.out.println("어허 손버릇.");
+		}
+		System.out.println();
+	}
+	
+
+
+	private void buyBait(int num) {
+		System.out.println("구매할 떡밥 개수를 입력하세요. (떡밥 비용 : 500원)");
+		
+		int baitCnt = scan.nextInt();//	떡밥 구매
+		int baitPrice = baitCnt * 500;				// 총 떡밥구매량
+		
+		User u = new User(num, baitCnt, baitPrice);		// num : 회원번호
+		int isOk = svc.updBait(u);
+		
+		System.out.println("떡밥 구매 " + (isOk > 0? "완료":"실패"));
+	}
+
+	private void buyFishrod(int num) {
+		System.out.println("구매할 낚시대를 선택하세요.");
+		System.out.println("1. 일반 낚시대 : 10000원");
+		System.out.println("2. 스탠다드 낚시대 : 30000원");
+		System.out.println("3. 프리미엄 낚시대 : 50000원");
+		System.out.println("4. 엘리트 낚시대 : 100000원");
+		int rodnum = scan.nextInt();
+		
+		String fishrod = "";
+		int cost = 0;
+		switch(rodnum) {
+		case 1:
+			fishrod = "normal";
+			cost = 10000;
+			break;
+		case 2:
+			fishrod = "standard";
+			cost = 30000;
+			break;
+		case 3:
+			fishrod = "premium";
+			cost = 50000;
+			break;
+		case 4:
+			fishrod = "elite";
+			cost = 100000;
+			break;
+		}
+		// 이거 낚시대 금액 잡아서 처리
+		User u1 = new User(num, cost);
+		boolean isOk1 = svc.compMoney(u1);
+		System.out.println(isOk1);
+		if(isOk1) {
+			User u = new User(num, fishrod, cost);
+			int isOk2 = svc.updRod(u);
+			System.out.println("낚시대 구매 " + (isOk2 > 0? "완료":"실패"));
+		} else {
+			System.out.println("응 낚싯대 못사~~~");
+		}
+		
+	}
+	
+	private void sellFish(int num) {
+		System.out.println("하나만 파시겠습니까 모두 파시겠습니까? : (1 : 하나 / 2 : 모두)");
+		int oneOrAll = scan.nextInt();
+		
+		switch(oneOrAll) {
+		case 1: sellOneFish(num); break;
+		case 2: sellAllFish(num); break;
+		default:
+			System.out.println("팔기 싫어?");
+		}
+		
+	}
+
+	private void sellOneFish(int num) {
+		inventory(num);
+		System.out.println("판매하려는 인벤토리 번호를 입력하세요.");
+		int sellNum = scan.nextInt();
+		
+		User u = new User(num, sellNum);
+		Inventory i = new Inventory(num, sellNum);
+		
+		int isOk1 = svc.plusOneMoney(u);
+		int isOk2 = svc.sellOneFish(i);
+		
+		System.out.println("금액 입금 " + (isOk1 > 0? "완료":"실패"));
+		System.out.println("물고기 판매 " + (isOk2 > 0? "완료":"실패"));
+	}
+	private void sellAllFish(int num) {
+		User u = new User(num);
+		Inventory i = new Inventory(num);
+		
+		int isOk1 = svc.plusAllMoney(u);
+		int isOk2 = svc.sellAllFish(i);
+		
+		System.out.println("금액 입금 " + (isOk1 > 0? "완료":"실패"));
+		System.out.println("물고기 판매 " + (isOk2 > 0? "완료":"실패"));
+	}
+
+	private void test2() {
+		System.out.println("준비중입니다.");
+		
+	}
+
+	
+}
